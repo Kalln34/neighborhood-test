@@ -10,7 +10,8 @@ function createCards(container, items, getHref, getTitle, getImg) {
   container.innerHTML = "";
 
   if (!items || items.length === 0) {
-    container.innerHTML = "<p style='color:white'>No results found.</p>";
+    container.innerHTML = `
+  <p class="empty-state">No results found.</p>`;
     return;
   }
 
@@ -28,7 +29,20 @@ function createCards(container, items, getHref, getTitle, getImg) {
 
     const title = document.createElement("span");
     title.textContent = getTitle(item);
+    title.className = "card-title";
     card.appendChild(title);
+
+    // Animation
+    card.style.animation = "fadeInUp 0.5s ease";
+
+    // Click feedback
+    card.addEventListener("mousedown", () => {
+      card.style.transform = "scale(0.98)";
+    });
+
+    card.addEventListener("mouseup", () => {
+      card.style.transform = "";
+    });
 
     container.appendChild(card);
   });
@@ -54,6 +68,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const subcategoryKey = params.get("subcategory");
 
 
+   // =================== ACTIVE NAV AUTO ===================
+  const currentPage = window.location.pathname.split("/").pop();
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    if (link.getAttribute("href") === currentPage) {
+      link.classList.add("active");
+    }
+  });
+
 // =================== EXPLORE PAGE ===================
 const exploreGrid = document.querySelector(".states-grid");
   const searchInput = document.getElementById("stateSearch");
@@ -77,30 +99,13 @@ const exploreGrid = document.querySelector(".states-grid");
       );
     }
 
-    renderStates(states);
+     renderStates(states);
 
-    if (searchInput) {
-      searchInput.addEventListener("input", () => {
-        const filter = searchInput.value.toLowerCase();
-
-        const filtered = states.filter(state =>
-          state.name.toLowerCase().includes(filter)
-        );
-
-        renderStates(filtered);
-      });
-    }
-
-    // =================== SEARCH ===================
     // No results message
     const noResults = document.createElement("p");
     noResults.textContent = "No states found.";
-    noResults.style.textAlign = "center";
+    noResults.className = "empty-state";
     noResults.style.display = "none";
-    noResults.style.color = "#a0a64a";
-    noResults.style.fontWeight = "600";
-    noResults.style.marginTop = "20px";
-
     exploreGrid.parentNode.appendChild(noResults);
 
     searchInput?.addEventListener("input", () => {
@@ -152,13 +157,18 @@ const stateTitle = document.getElementById("stateTitle");
         img: state.cities[cityKey].img,
         href: `city.html?state=${stateKey}&city=${cityKey}`
       }));
+      
       createCards(stateCardsGrid, cities, city => city.href, city => city.name, city => city.img);
     }
    
   // --- Breadcrumb ---
   const breadcrumb = document.getElementById("breadcrumbTrail");
     if (breadcrumb) {
-      breadcrumb.innerHTML = `<a href="explore.html" style="color:white;text-decoration:underline;">Explore</a> &gt; <span>${state.name}</span>`;
+      breadcrumb.innerHTML = `
+        <a href="explore.html">Explore</a> 
+        <span>›</span>
+        <span>${state.name}</span>
+      `;
     }
   }
 
@@ -211,8 +221,10 @@ const cityTitle = document.getElementById("cityTitle");
     const cityBreadcrumb = document.getElementById("cityBreadcrumb");
     if (cityBreadcrumb) {
       cityBreadcrumb.innerHTML = `
-        <a href="explore.html">Explore</a> &gt;
-        <a href="state.html?state=${stateKey}">${DATA[stateKey].name}</a> &gt; 
+        <a href="explore.html">Explore</a> 
+        <span>›</span>
+        <a href="state.html?state=${stateKey}">${DATA[stateKey].name}</a> 
+        <span>›</span>
         <span>${city.name}</span>
       `;
     }
@@ -268,7 +280,7 @@ const subcategoryTitleEl = document.getElementById("subcategoryTitle");
 
     // =================== NORMAL CARDS ===================
     if (normalItems.length === 0) {
-      content.innerHTML += "<p>No items found.</p>";
+      content.innerHTML += `<p class="empty-state">No items found.</p>`;
     } else {
       content.innerHTML += normalItems.map(place => `
         <div class="detail-card">
@@ -289,11 +301,14 @@ const subcategoryTitleEl = document.getElementById("subcategoryTitle");
   const subBreadcrumb = document.getElementById("subcategoryBreadcrumb");
     if (subBreadcrumb) {
       subBreadcrumb.innerHTML = `
-        <a href="explore.html">Explore</a> &gt;
-        <a href="state.html?state=${stateKey}">${DATA[stateKey].name}</a> &gt;
+        <a href="explore.html">Explore</a> 
+        <span>›</span>
+        <a href="state.html?state=${stateKey}">${DATA[stateKey].name}</a> 
+        <span>›</span>
         <a href="city.html?state=${stateKey}&city=${cityKey}">
           ${DATA[stateKey].cities[cityKey].name}
-        </a> &gt;
+        </a> 
+        <span>›</span>
         <span>${subcategory.label}</span>
       `;
     }
@@ -317,6 +332,7 @@ const subcategoryTitleEl = document.getElementById("subcategoryTitle");
 
   function renderTips(filter = "All") {
     tipsList.innerHTML = "";
+
     savedTips.forEach((tip, index) => {
       if (filter !== "All" && tip.category !== filter) return;
 
@@ -330,7 +346,12 @@ const subcategoryTitleEl = document.getElementById("subcategoryTitle");
       `;
       tipsList.appendChild(li);
     });
+
+    if (tipsList.children.length === 0) {
+      tipsList.innerHTML = `<p class="empty-state">No tips yet. Be the first to share!</p>`;
+    }
   }
+
 
   // Initial render
   renderTips();
@@ -345,11 +366,15 @@ const subcategoryTitleEl = document.getElementById("subcategoryTitle");
       alert("Please enter a tip before submitting");
       return;
     }
+
     savedTips.push({ text: tipText, category });
       localStorage.setItem("communityTips", JSON.stringify(savedTips));
+
       renderTips(filterCategory?.value || "All");
+
       userTipInput.value = "";
       tipCategory.value = "general";
+      
       if (submitMessage) { submitMessage.style.display = "block"; setTimeout(() => { submitMessage.style.display = "none"; }, 2000); }
     });
 

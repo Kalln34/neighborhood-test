@@ -228,6 +228,31 @@ body {
   color: white;
 }
 
+/* ================= Individual States Page================= */
+.page-header {
+  text-align: center;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.page-subtitle {
+  opacity: 0.85;
+  font-size: 1rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+
+.empty-state {
+  color: #a0a64a;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: 600;
+}
 
 /* ================= State Search Bar ================= */
 .state-search {
@@ -345,9 +370,10 @@ body {
 
 /* ================= Breadcrumb ================= */
 .breadcrumb {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   color: #fff;
   margin-bottom: 10px;
+  opacity: 0.85;
 }
 
 /* ================= Content Wrapper: Sidebar + Grid ================= */
@@ -398,6 +424,17 @@ body {
 .state-sidebar ul li a.active {
   background: rgba(160, 166, 74, 0.8);
   color: white;
+}
+
+.sidebar-title {
+  color: #a0a64a;
+  margin-bottom: 10px;
+  padding-left: 8px;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 40px; /* increase from 30 */
 }
 
 /* ================= CATEGORY GROUPING ================= */
