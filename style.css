@@ -42,8 +42,8 @@ body {
   gap: 10px;
 }
 
-.logo-img {
-  height: 30px; /* adjust size */
+.logo-image {
+  height: 40px; /* adjust size */
   width: auto;
   border-radius: 6px;
 }
@@ -426,6 +426,13 @@ body {
 .states-grid::-webkit-scrollbar-thumb {
   background: rgba(255,255,255,0.3);
   border-radius: 3px;
+}
+
+
+.section-title {
+  color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 /* ================= CATEGORY and EXPLORE background generic css ================= */
