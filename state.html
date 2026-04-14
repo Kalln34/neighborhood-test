@@ -12,7 +12,7 @@
  <!-- Navigation -->
 <nav class="main-nav">
   <div class="logo">
-    <img src="Images/logo for website.png" alt="Neighborhood Navigator Logo" class="logo-img">  
+    <img src="Images/logo for website.png" alt="Neighborhood Navigator Logo" class="logo-image">  
     <h2>Neighborhood Navigator</h2>
   </div>
   <ul class="nav-links">
@@ -27,12 +27,23 @@
 <!-- Main Content -->
 <main class="explore-page">
   <div class="frosted-container state-frosted-container">
+
     <nav class="breadcrumb" id="breadcrumbTrail"></nav>
-    <h1 id="stateTitle">State Name</h1>
+
+     <section class="page-header">
+      <h1 id="stateTitle">State Name</h1>
+      <p class="page-subtitle">
+        Explore major cities and local insights across this state.
+      </p>
+    </section>
+    
     <div class="content-wrapper">
+
       <aside class="state-sidebar">
+        <h3 class="sidebar-title">Cities</h3>
         <ul id="stateSidebar"></ul>
       </aside>
+
       <div class="states-grid" id="stateCardsGrid"></div>
     </div>
   </div>
