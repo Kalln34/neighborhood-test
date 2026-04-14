@@ -48,6 +48,20 @@ function createCards(container, items, getHref, getTitle, getImg) {
   });
 }
 
+
+// =================== BREADCRUMB HELPER ===================
+function setBreadcrumb(el, items) {
+  if (!el) return;
+
+  el.innerHTML = items
+    .map((item, i) => {
+      const isLast = i === items.length - 1;
+      if (isLast || !item.href) return `<span>${item.label}</span>`;
+      return `<a href="${item.href}">${item.label}</a>`;
+    })
+    .join(` <span class="crumb-sep">›</span> `);
+}
+
 // =================== CATEGORY LABELS ===================
 const categoryLabels = {
   education: "Education",
@@ -67,39 +81,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoryKey = params.get("category");
   const subcategoryKey = params.get("subcategory");
 
-
    // =================== ACTIVE NAV AUTO ===================
-  const currentPage = window.location.pathname.split("/").pop();
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    if (link.getAttribute("href") === currentPage) {
-      link.classList.add("active");
-    }
-  });
+  const currentPage = window.location.pathname.split("/").pop().split("?")[0];
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  const linkPage = link.getAttribute("href").split("?")[0];
+
+  if (linkPage === currentPage) {
+    link.classList.add("active");
+  }
+});
 
 // =================== EXPLORE PAGE ===================
 const exploreGrid = document.querySelector(".states-grid");
-  const searchInput = document.getElementById("stateSearch");
+const searchInput = document.getElementById("stateSearch");
 
-  let states = [];
+let states = [];
 
-  if (exploreGrid && typeof DATA !== "undefined") {
-    states = Object.keys(DATA).map(key => ({
-      key,
-      name: DATA[key].name,
-      img: DATA[key].img
-    }));
+if (exploreGrid && typeof DATA !== "undefined") {
+  states = Object.keys(DATA).map(key => ({
+    key,
+    name: DATA[key].name,
+    img: DATA[key].img
+  }));
 
-    function renderStates(list) {
-      createCards(
-        exploreGrid,
-        list,
-        s => `state.html?state=${s.key}`,
-        s => s.name,
-        s => s.img
-      );
-    }
+  function renderStates(list) {
+    createCards(
+      exploreGrid,
+      list,
+      s => `state.html?state=${s.key}`,
+      s => s.name,
+      s => s.img
+    );
+  }
 
-     renderStates(states);
+  renderStates(states);
+
 
     // No results message
     const noResults = document.createElement("p");
@@ -121,7 +138,7 @@ const exploreGrid = document.querySelector(".states-grid");
   }
 
 // =================== STATE PAGE ===================
-const stateTitle = document.getElementById("stateTitle");
+  const stateTitle = document.getElementById("stateTitle");
   const stateSidebar = document.getElementById("stateSidebar");
   const stateCardsGrid = document.getElementById("stateCardsGrid");
 
@@ -162,27 +179,26 @@ const stateTitle = document.getElementById("stateTitle");
     }
    
   // --- Breadcrumb ---
-  const breadcrumb = document.getElementById("breadcrumbTrail");
-    if (breadcrumb) {
-      breadcrumb.innerHTML = `
-        <a href="explore.html">Explore</a> 
-        <span>›</span>
-        <span>${state.name}</span>
-      `;
+  const stateBreadcrumb = document.getElementById("breadcrumbTrail");
+    if (stateBreadcrumb) {
+      setBreadcrumb(stateBreadcrumb, [
+        { label: "Explore", href: "explore.html" },
+        { label: state.name }
+      ]);
     }
   }
 
 
 // =================== CITY PAGE ===================
 const cityTitle = document.getElementById("cityTitle");
+  const categoryGrid = document.getElementById("categoryGrid");
 
   if (cityTitle && stateKey && cityKey && DATA?.[stateKey]?.cities?.[cityKey]) {
-    const city = DATA[stateKey].cities[cityKey];
+    const state = DATA[stateKey];
+    const city = state.cities[cityKey];
 
     document.title = `Neighborhood Navigator - ${city.name}`;
     cityTitle.textContent = city.name;
-
-    const categoryGrid = document.getElementById("categoryGrid");
 
     if (categoryGrid) {
       categoryGrid.innerHTML = "";
@@ -216,47 +232,44 @@ const cityTitle = document.getElementById("cityTitle");
         categoryGrid.appendChild(section);
       });
     }
+  }
 
 // --- Breadcrumb ---
-    const cityBreadcrumb = document.getElementById("cityBreadcrumb");
+   const cityBreadcrumb = document.getElementById("breadcrumbTrail");
     if (cityBreadcrumb) {
-      cityBreadcrumb.innerHTML = `
-        <a href="explore.html">Explore</a> 
-        <span>›</span>
-        <a href="state.html?state=${stateKey}">${DATA[stateKey].name}</a> 
-        <span>›</span>
-        <span>${city.name}</span>
-      `;
-    }
+    setBreadcrumb(cityBreadcrumb, [
+      { label: "Explore", href: "explore.html" },
+      { label: state.name, href: `state.html?state=${stateKey}` },
+      { label: city.name }
+    ]);
   }
 
   // =================== SUBCATEGORY PAGE ===================
 const subcategoryTitleEl = document.getElementById("subcategoryTitle");
+const content = document.getElementById("subcategoryContent");
 
-  if (
-    subcategoryTitleEl &&
-    stateKey &&
-    cityKey &&
-    categoryKey &&
-    subcategoryKey &&
-    DATA?.[stateKey]?.cities?.[cityKey]?.categories?.[categoryKey]?.subcategories?.[subcategoryKey]
-  ) {
-    const subcategory =
-      DATA[stateKey].cities[cityKey].categories[categoryKey].subcategories[subcategoryKey];
+if (
+  subcategoryTitleEl &&
+  stateKey &&
+  cityKey &&
+  categoryKey &&
+  subcategoryKey &&
+  DATA?.[stateKey]?.cities?.[cityKey]?.categories?.[categoryKey]?.subcategories?.[subcategoryKey]
+) {
+  const state = DATA[stateKey];
+  const city = state.cities[cityKey];
+  const category = city.categories[categoryKey];
+  const subcategory = category.subcategories[subcategoryKey];
 
-      // split intro vs normal items
-    const allItems = subcategory.items || []; // this defines all items from data js
+  document.title = `Neighborhood Navigator - ${subcategory.label}`;
+  subcategoryTitleEl.textContent = `${subcategory.label} in ${city.name}`;
 
-    const introItems = allItems.filter(i => i.type === "intro");
-    const normalItems = allItems.filter(i => i.type !== "intro");
+  const items = subcategory.items || [];
+  const introItems = items.filter(i => i.type === "intro");
+  const normalItems = items.filter(i => i.type !== "intro");
 
-    subcategoryTitleEl.textContent =
-      `${subcategory.label} in ${DATA[stateKey].cities[cityKey].name}`;
-
-    const content = document.getElementById("subcategoryContent");
-
-    if (content) {
-      content.innerHTML = "";
+  if (content) {
+    content.innerHTML = "";
 
     // =================== INTRO SECTION ===================
     if (introItems.length > 0) {
@@ -278,42 +291,41 @@ const subcategoryTitleEl = document.getElementById("subcategoryTitle");
       content.appendChild(introSection);
     }
 
+
     // =================== NORMAL CARDS ===================
-    if (normalItems.length === 0) {
+     if (normalItems.length === 0) {
       content.innerHTML += `<p class="empty-state">No items found.</p>`;
     } else {
-      content.innerHTML += normalItems.map(place => `
-        <div class="detail-card">
+      normalItems.forEach(place => {
+        const card = document.createElement("div");
+        card.className = "detail-card";
+
+        card.innerHTML = `
           <img src="${place.img || "Images/default.jpg"}" alt="${place.name}">
-          
           <div class="detail-info">
             <h3>${place.name}</h3>
             ${place.description ? `<p>${place.description}</p>` : ""}
             ${place.address ? `<p><strong>Address:</strong> ${place.address}</p>` : ""}
-            ${place.link && place.link !== "#" ? `<a href="${place.link}" target="_blank">Visit Website</a>` : ""}
+            ${place.link ? `<a href="${place.link}" target="_blank">Visit Website</a>` : ""}
           </div>
-        </div>
-      `).join("");
+        `;
+
+        content.appendChild(card);
+      });
     }
   }
 
   // Breadcrumb
-  const subBreadcrumb = document.getElementById("subcategoryBreadcrumb");
-    if (subBreadcrumb) {
-      subBreadcrumb.innerHTML = `
-        <a href="explore.html">Explore</a> 
-        <span>›</span>
-        <a href="state.html?state=${stateKey}">${DATA[stateKey].name}</a> 
-        <span>›</span>
-        <a href="city.html?state=${stateKey}&city=${cityKey}">
-          ${DATA[stateKey].cities[cityKey].name}
-        </a> 
-        <span>›</span>
-        <span>${subcategory.label}</span>
-      `;
-    }
+   const stateBreadcrumb = document.getElementById("breadcrumbTrail");
+  if (stateBreadcrumb) {
+    setBreadcrumb(stateBreadcrumb, [
+      { label: "Explore", href: "explore.html" },
+      { label: state.name, href: `state.html?state=${stateKey}` },
+      { label: city.name, href: `city.html?state=${stateKey}&city=${cityKey}` },
+      { label: subcategory.label }
+      ]);
   }
-});
+}
 
 // =================== Local Insights Page ===================
 
@@ -392,5 +404,5 @@ const subcategoryTitleEl = document.getElementById("subcategoryTitle");
   filterCategory?.addEventListener("change", function() {
     renderTips(filterCategory.value);
     });
-
+  })
 })();
