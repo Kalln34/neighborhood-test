@@ -1,0 +1,107 @@
+!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neighborhood Navigator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="main-nav">
+
+    <div class="logo">
+      <img src="Images/website-logo.png" alt="Neighborhood Navigator Logo" class="logo-image">  
+      <h2>Neighborhood Navigator</h2>
+    </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explore.html">Explore Neighborhoods</a></li>
+            <li><a href="localinsights.html">Local Insights</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+   <main class="insights-page">
+        <section id="community-tips">
+            <h2>Things I wish I Knew Before Moving</h2>
+            <p class="page-intro">
+            Community-powered insights from locals sharing real experiences about living here.
+            </p>
+
+            <div class="info-box">
+            <h3>How this works</h3>
+            <ul>
+                <li>💬 Share real experiences about living here</li>
+                <li>⬆️ Upvote tips that are helpful</li>
+                <li>🔍 Filter by category (Traffic, Schools, etc.)</li>
+                <li>📌 Top-voted tips rise to the top automatically</li>
+            </ul>
+            </div>
+
+            <form id="tipForm">
+
+                <div class="form-group">
+                    <label for="userTip">Share your Experience:</label>
+                    <textarea
+                        id="userTip"
+                        rows="4"
+                        placeholder="Example: Traffic on 91 starts building around 3:00 PM on weekdays..."
+                        ></textarea>
+                </div>
+
+                    <label for="tipCategory">Category</label>
+                    <select id="tipCategory">
+                        <option value="general">General</option>
+                        <option value="traffic">Traffic</option>
+                        <option value="schools">Schools</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="community">Community</option>
+                    </select>
+
+                  <button type="submit">Submit Your Tip</button>
+            </form>
+
+            <p id="submitMessage" style="color: black; display: none;">Tip submitted successfully!</p>
+
+            <!-- Optional filter -->
+            <label for="filterCategory">Filter by category:</label>
+                <select id="filterCategory">
+                    <option value="All">All</option>
+                    <option value="general">General</option>
+                    <option value="traffic">Traffic</option>
+                    <option value="schools">Schools</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="community">Community</option>
+                </select>
+
+            <ul id="tipsList"></ul>
+        </section>
+    </main>
+
+<footer class="site-footer">
+    <div class="footer-left">
+        <!-- Social media icons (use font awesome or SVGs) -->
+        <a href="#"><img src="images/facebook.svg" alt="Facebook"></a>
+        <a href="#"><img src="images/instagram.svg" alt="Instagram"></a>
+    </div>
+
+    <div class="footer-center">
+        <p>Neighborhood Navigator 2026</p>
+    </div>
+
+    <div class="footer-right">
+        <a href="about.html">About</a>
+        <a href="profile.html">Profile</a>
+        <a href="community-policies.html">Community Policies</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact Us</a>
+    </div>
+</footer>
+
+<script src="index.js"></script>
+    
+</body>
+</html>
