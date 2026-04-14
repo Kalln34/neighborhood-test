@@ -5,7 +5,42 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+
+  animation: fadeInPage 0.6s ease-in;
 }
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* headings */
+h1, h2, h3 {
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+.page-subtitle,
+.city-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+/* spacing */
+section {
+  margin-bottom: 30px;
+}
+
 
 /* navigation */
 
@@ -159,14 +194,16 @@ body {
   color: white;
   text-decoration: none;
   padding: 15px 30px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
-  transition: 0.3s;
+
+  transition: all 0.25s ease;
 }
 
 .btn-primary:hover {
-  background-color: #e06b5a;
-  transform: translateY(-2px);
+   background-color: #e06b5a;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 
@@ -208,7 +245,7 @@ body {
   align-items: center;
   gap: 30px;
 
-  padding: 30px 30px 15px 30px;
+  padding: 40px 30px 25px 30px;
   max-width: 1400px;
   margin: 0 auto;
 
@@ -292,53 +329,51 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
 
-  padding: 12px;
-  border-radius: 15px;
+  border-radius: 16px;
+  overflow: hidden;
   text-decoration: none;
 
   background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(12px);
 
   color: white;
-  text-align: center;
-  overflow: hidden;
 
-  /* IMPORTANT: ensures cards are always visible */
-  opacity: 1;
-  transform: none;
+  transition: all 0.35s ease;
 
-  transition: all 0.3s ease;
+  position: relative;
+}
+
+.state-card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+
+  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
 }
 
  
 /* IMAGE */
-.state-card img,
-.detail-card img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-
+.state-card img {
+width: 100%;
+  height: 130px;
   object-fit: cover;
-  object-position: center;
-
-  border-radius: 14px;
 }
 
 /* TITLE */
 .state-card span {
-  font-size: 1rem;
+  padding: 12px;
   font-weight: 600;
-  color: white;
-  padding: 5px 0;
+  font-size: 1rem;
 }
 
 /* HOVER EFFECT */
 .state-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  background: rgba(160,166,74,0.3);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
 }
 
 
@@ -370,10 +405,22 @@ body {
 
 /* ================= Breadcrumb ================= */
 .breadcrumb {
-  font-size: 0.8rem;
-  color: #fff;
-  margin-bottom: 10px;
-  opacity: 0.85;
+  text-align: left;
+  font-size: 14px;
+  margin: 10px 0 20px;
+}
+
+.breadcrumb a {
+  color: #0077cc;
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  color: #555;
+}
+
+.crumb-sep {
+  margin: 0 6px;
 }
 
 /* ================= Content Wrapper: Sidebar + Grid ================= */
@@ -424,6 +471,10 @@ body {
 .state-sidebar ul li a.active {
   background: rgba(160, 166, 74, 0.8);
   color: white;
+}
+
+.state-sidebar ul li a:hover {
+  padding-left: 12px;
 }
 
 .sidebar-title {
