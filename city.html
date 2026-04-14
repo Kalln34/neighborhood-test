@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neighborhood Navigator - City</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="city-page">
+
+<nav class="main-nav">
+
+    <div class="logo">
+      <img src="Images/website-logo.png" alt="Neighborhood Navigator Logo" class="logo-image">  
+      <h2>Neighborhood Navigator</h2>
+    </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="explore.html">Explore Neighborhoods</a></li>
+            <li><a href="localinsights.html">Local Insights</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+<main class="city-page connecticut" style="background-image: url('Images/Connecticut/hartskyline.png');">
+
+  <div class="frosted-container">
+    
+    <!-- Breadcrumb -->
+    <nav id="cityBreadcrumb" class="breadcrumb"></nav>
+
+    <!-- City Header -->
+    <section class="city-header">
+      <h1 id="cityTitle">City Name</h1>
+      <p class="city-subtitle">Explore key information and categories for this city.</p>
+    </section>
+
+    <!-- Categories Grid (UNCHANGED ID) -->
+    <section>
+      <h2 class="section-title">Explore Categories</h2>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+  </div>
+
+</main>
+
+<script src="data.js"></script> 
+<footer class="site-footer">
+    <div class="footer-left">
+      <a href="#"><img src="images/facebook.svg" alt="Facebook"></a>
+      <a href="#"><img src="images/instagram.svg" alt="Instagram"></a>
+    </div>
+        <div class="footer-center">
+        <p>Neighborhood Navigator 2026</p>
+        </div>
+    <div class="footer-right">
+      <a href="about.html">About</a>
+      <a href="profile.html">Profile</a>
+      <a href="community-policies.html">Community Policies</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact Us</a>
+    </div>
+  </footer>
+
+<script src="index.js"></script>
+</body>
+</html>
