@@ -141,6 +141,8 @@ if (exploreGrid && typeof DATA !== "undefined") {
   const stateTitle = document.getElementById("stateTitle");
   const stateSidebar = document.getElementById("stateSidebar");
   const stateCardsGrid = document.getElementById("stateCardsGrid");
+  const breadcrumbTrail = document.getElementById("breadcrumbTrail");
+
 
   if (stateTitle && stateKey && DATA?.[stateKey]) {
     const state = DATA[stateKey];
@@ -191,18 +193,18 @@ if (exploreGrid && typeof DATA !== "undefined") {
 
 // =================== CITY PAGE ===================
 const cityTitle = document.getElementById("cityTitle");
-  const categoryGrid = document.getElementById("categoryGrid");
+const cityBreadcrumb = document.getElementById("breadcrumbTrail");
 
   if (cityTitle && stateKey && cityKey && DATA?.[stateKey]?.cities?.[cityKey]) {
-    const state = DATA[stateKey];
-    const city = state.cities[cityKey];
+    const city = DATA[stateKey].cities[cityKey];
 
     document.title = `Neighborhood Navigator - ${city.name}`;
     cityTitle.textContent = city.name;
 
+    const categoryGrid = document.getElementById("categoryGrid");
+
     if (categoryGrid) {
       categoryGrid.innerHTML = "";
-
       Object.entries(city.categories || {}).forEach(([catKey, category]) => {
 
         const section = document.createElement("div");
@@ -235,60 +237,48 @@ const cityTitle = document.getElementById("cityTitle");
   }
 
 // --- Breadcrumb ---
-   const cityBreadcrumb = document.getElementById("breadcrumbTrail");
-    if (cityBreadcrumb) {
     setBreadcrumb(cityBreadcrumb, [
       { label: "Explore", href: "explore.html" },
       { label: state.name, href: `state.html?state=${stateKey}` },
       { label: city.name }
     ]);
+
   }
 
   // =================== SUBCATEGORY PAGE ===================
-const subcategoryTitleEl = document.getElementById("subcategoryTitle");
-const content = document.getElementById("subcategoryContent");
+const subTitle = document.getElementById("subcategoryTitle");
+  const content = document.getElementById("subcategoryContent");
+  const subBreadcrumb = document.getElementById("breadcrumbTrail");
 
-if (
-  subcategoryTitleEl &&
-  stateKey &&
-  cityKey &&
-  categoryKey &&
-  subcategoryKey &&
-  DATA?.[stateKey]?.cities?.[cityKey]?.categories?.[categoryKey]?.subcategories?.[subcategoryKey]
-) {
-  const state = DATA[stateKey];
-  const city = state.cities[cityKey];
-  const category = city.categories[categoryKey];
-  const subcategory = category.subcategories[subcategoryKey];
+  const state = DATA?.[stateKey];
+  const city = state?.cities?.[cityKey];
+  const category = city?.categories?.[categoryKey];
+  const subcategory = category?.subcategories?.[subcategoryKey];
 
-  document.title = `Neighborhood Navigator - ${subcategory.label}`;
-  subcategoryTitleEl.textContent = `${subcategory.label} in ${city.name}`;
+  if (subTitle && content && subcategory) {
 
-  const items = subcategory.items || [];
-  const introItems = items.filter(i => i.type === "intro");
-  const normalItems = items.filter(i => i.type !== "intro");
+    document.title = `Neighborhood Navigator - ${subcategory.label}`;
+    subTitle.textContent = `${subcategory.label} in ${city.name}`;
 
-  if (content) {
+    const items = subcategory.items || [];
+
+    const intro = items.filter(i => i.type === "intro");
+    const normal = items.filter(i => i.type !== "intro");
+
     content.innerHTML = "";
 
-    // =================== INTRO SECTION ===================
-    if (introItems.length > 0) {
-      const introSection = document.createElement("div");
-      introSection.className = "intro-section";
+    if (intro.length) {
+      const introDiv = document.createElement("div");
+      introDiv.className = "intro-section";
 
-      introItems.forEach(item => {
-        const introCard = document.createElement("div");
-        introCard.className = "intro-card";
-
-        introCard.innerHTML = `
-          <h2>${item.name}</h2>
-          <p>${item.description || ""}</p>
-        `;
-
-        introSection.appendChild(introCard);
+      intro.forEach(i => {
+        const div = document.createElement("div");
+        div.className = "intro-card";
+        div.innerHTML = `<h2>${i.name}</h2><p>${i.description || ""}</p>`;
+        introDiv.appendChild(div);
       });
 
-      content.appendChild(introSection);
+      content.appendChild(introDiv);
     }
 
 
@@ -316,16 +306,14 @@ if (
   }
 
   // Breadcrumb
-   const stateBreadcrumb = document.getElementById("breadcrumbTrail");
-  if (stateBreadcrumb) {
-    setBreadcrumb(stateBreadcrumb, [
+  setBreadcrumb(subBreadcrumb, [
       { label: "Explore", href: "explore.html" },
       { label: state.name, href: `state.html?state=${stateKey}` },
       { label: city.name, href: `city.html?state=${stateKey}&city=${cityKey}` },
       { label: subcategory.label }
-      ]);
+    ]);
   }
-}
+)
 
 // =================== Local Insights Page ===================
 
