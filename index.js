@@ -48,6 +48,19 @@ function createCards(container, items, getHref, getTitle, getImg) {
   });
 }
 
+// =================== BREADCRUMB (ONLY SYSTEM USED) ===================
+function setBreadcrumb(el, items) {
+  if (!el) return;
+
+  el.innerHTML = items
+    .map((item, i) => {
+      const last = i === items.length - 1;
+      if (last || !item.href) return `<span>${item.label}</span>`;
+      return `<a href="${item.href}">${item.label}</a>`;
+    })
+    .join(` <span class="crumb-sep">›</span> `);
+}
+
 // =================== CATEGORY LABELS ===================
 const categoryLabels = {
   education: "Education",
@@ -124,6 +137,8 @@ const exploreGrid = document.querySelector(".states-grid");
 const stateTitle = document.getElementById("stateTitle");
   const stateSidebar = document.getElementById("stateSidebar");
   const stateCardsGrid = document.getElementById("stateCardsGrid");
+  const breadcrumbTrail = document.getElementById("breadcrumbTrail");
+
 
   if (stateTitle && stateKey && DATA?.[stateKey]) {
     const state = DATA[stateKey];
@@ -162,19 +177,16 @@ const stateTitle = document.getElementById("stateTitle");
     }
    
   // --- Breadcrumb ---
-  const breadcrumb = document.getElementById("breadcrumbTrail");
-    if (breadcrumb) {
-      breadcrumb.innerHTML = `
-        <a href="explore.html">Explore</a> 
-        <span>›</span>
-        <span>${state.name}</span>
-      `;
-    }
+  setBreadcrumb(breadcrumbTrail, [
+      { label: "Explore", href: "explore.html" },
+      { label: state.name }
+    ]);
   }
 
 
 // =================== CITY PAGE ===================
 const cityTitle = document.getElementById("cityTitle");
+const cityBreadcrumb = document.getElementById("breadcrumbTrail");
 
   if (cityTitle && stateKey && cityKey && DATA?.[stateKey]?.cities?.[cityKey]) {
     const city = DATA[stateKey].cities[cityKey];
@@ -218,64 +230,48 @@ const cityTitle = document.getElementById("cityTitle");
     }
 
 // --- Breadcrumb ---
-    const cityBreadcrumb = document.getElementById("cityBreadcrumb");
-    if (cityBreadcrumb) {
-      cityBreadcrumb.innerHTML = `
-        <a href="explore.html">Explore</a> 
-        <span>›</span>
-        <a href="state.html?state=${stateKey}">${DATA[stateKey].name}</a> 
-        <span>›</span>
-        <span>${city.name}</span>
-      `;
-    }
+    setBreadcrumb(cityBreadcrumb, [
+      { label: "Explore", href: "explore.html" },
+      { label: state.name, href: `state.html?state=${stateKey}` },
+      { label: city.name }
+    ]);
+
   }
 
   // =================== SUBCATEGORY PAGE ===================
-const subcategoryTitleEl = document.getElementById("subcategoryTitle");
+const subTitle = document.getElementById("subcategoryTitle");
+  const content = document.getElementById("subcategoryContent");
+  const subBreadcrumb = document.getElementById("breadcrumbTrail");
 
-  if (
-    subcategoryTitleEl &&
-    stateKey &&
-    cityKey &&
-    categoryKey &&
-    subcategoryKey &&
-    DATA?.[stateKey]?.cities?.[cityKey]?.categories?.[categoryKey]?.subcategories?.[subcategoryKey]
-  ) {
-    const subcategory =
-      DATA[stateKey].cities[cityKey].categories[categoryKey].subcategories[subcategoryKey];
+  const state = DATA?.[stateKey];
+  const city = state?.cities?.[cityKey];
+  const category = city?.categories?.[categoryKey];
+  const subcategory = category?.subcategories?.[subcategoryKey];
 
-      // split intro vs normal items
-    const allItems = subcategory.items || []; // this defines all items from data js
+  if (subTitle && content && subcategory) {
 
-    const introItems = allItems.filter(i => i.type === "intro");
-    const normalItems = allItems.filter(i => i.type !== "intro");
+    document.title = `Neighborhood Navigator - ${subcategory.label}`;
+    subTitle.textContent = `${subcategory.label} in ${city.name}`;
 
-    subcategoryTitleEl.textContent =
-      `${subcategory.label} in ${DATA[stateKey].cities[cityKey].name}`;
+    const items = subcategory.items || [];
 
-    const content = document.getElementById("subcategoryContent");
+    const intro = items.filter(i => i.type === "intro");
+    const normal = items.filter(i => i.type !== "intro");
 
-    if (content) {
-      content.innerHTML = "";
+    content.innerHTML = "";
 
-    // =================== INTRO SECTION ===================
-    if (introItems.length > 0) {
-      const introSection = document.createElement("div");
-      introSection.className = "intro-section";
+    if (intro.length) {
+      const introDiv = document.createElement("div");
+      introDiv.className = "intro-section";
 
-      introItems.forEach(item => {
-        const introCard = document.createElement("div");
-        introCard.className = "intro-card";
-
-        introCard.innerHTML = `
-          <h2>${item.name}</h2>
-          <p>${item.description || ""}</p>
-        `;
-
-        introSection.appendChild(introCard);
+      intro.forEach(i => {
+        const div = document.createElement("div");
+        div.className = "intro-card";
+        div.innerHTML = `<h2>${i.name}</h2><p>${i.description || ""}</p>`;
+        introDiv.appendChild(div);
       });
 
-      content.appendChild(introSection);
+      content.appendChild(introDiv);
     }
 
     // =================== NORMAL CARDS ===================
@@ -298,22 +294,14 @@ const subcategoryTitleEl = document.getElementById("subcategoryTitle");
   }
 
   // Breadcrumb
-  const subBreadcrumb = document.getElementById("subcategoryBreadcrumb");
-    if (subBreadcrumb) {
-      subBreadcrumb.innerHTML = `
-        <a href="explore.html">Explore</a> 
-        <span>›</span>
-        <a href="state.html?state=${stateKey}">${DATA[stateKey].name}</a> 
-        <span>›</span>
-        <a href="city.html?state=${stateKey}&city=${cityKey}">
-          ${DATA[stateKey].cities[cityKey].name}
-        </a> 
-        <span>›</span>
-        <span>${subcategory.label}</span>
-      `;
-    }
+  setBreadcrumb(subBreadcrumb, [
+      { label: "Explore", href: "explore.html" },
+      { label: state.name, href: `state.html?state=${stateKey}` },
+      { label: city.name, href: `city.html?state=${stateKey}&city=${cityKey}` },
+      { label: subcategory.label }
+    ]);
   }
-});
+)
 
 // =================== Local Insights Page ===================
 
