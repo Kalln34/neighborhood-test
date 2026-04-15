@@ -48,14 +48,15 @@ function createCards(container, items, getHref, getTitle, getImg) {
   });
 }
 
-// =================== BREADCRUMB (ONLY SYSTEM USED) ===================
+
+// =================== BREADCRUMB HELPER ===================
 function setBreadcrumb(el, items) {
   if (!el) return;
 
   el.innerHTML = items
     .map((item, i) => {
-      const last = i === items.length - 1;
-      if (last || !item.href) return `<span>${item.label}</span>`;
+      const isLast = i === items.length - 1;
+      if (isLast || !item.href) return `<span>${item.label}</span>`;
       return `<a href="${item.href}">${item.label}</a>`;
     })
     .join(` <span class="crumb-sep">›</span> `);
@@ -80,39 +81,42 @@ document.addEventListener("DOMContentLoaded", () => {
   const categoryKey = params.get("category");
   const subcategoryKey = params.get("subcategory");
 
-
    // =================== ACTIVE NAV AUTO ===================
-  const currentPage = window.location.pathname.split("/").pop();
-  document.querySelectorAll(".nav-links a").forEach(link => {
-    if (link.getAttribute("href") === currentPage) {
-      link.classList.add("active");
-    }
-  });
+  const currentPage = window.location.pathname.split("/").pop().split("?")[0];
+
+document.querySelectorAll(".nav-links a").forEach(link => {
+  const linkPage = link.getAttribute("href").split("?")[0];
+
+  if (linkPage === currentPage) {
+    link.classList.add("active");
+  }
+});
 
 // =================== EXPLORE PAGE ===================
 const exploreGrid = document.querySelector(".states-grid");
-  const searchInput = document.getElementById("stateSearch");
+const searchInput = document.getElementById("stateSearch");
 
-  let states = [];
+let states = [];
 
-  if (exploreGrid && typeof DATA !== "undefined") {
-    states = Object.keys(DATA).map(key => ({
-      key,
-      name: DATA[key].name,
-      img: DATA[key].img
-    }));
+if (exploreGrid && typeof DATA !== "undefined") {
+  states = Object.keys(DATA).map(key => ({
+    key,
+    name: DATA[key].name,
+    img: DATA[key].img
+  }));
 
-    function renderStates(list) {
-      createCards(
-        exploreGrid,
-        list,
-        s => `state.html?state=${s.key}`,
-        s => s.name,
-        s => s.img
-      );
-    }
+  function renderStates(list) {
+    createCards(
+      exploreGrid,
+      list,
+      s => `state.html?state=${s.key}`,
+      s => s.name,
+      s => s.img
+    );
+  }
 
-     renderStates(states);
+  renderStates(states);
+
 
     // No results message
     const noResults = document.createElement("p");
@@ -134,7 +138,7 @@ const exploreGrid = document.querySelector(".states-grid");
   }
 
 // =================== STATE PAGE ===================
-const stateTitle = document.getElementById("stateTitle");
+  const stateTitle = document.getElementById("stateTitle");
   const stateSidebar = document.getElementById("stateSidebar");
   const stateCardsGrid = document.getElementById("stateCardsGrid");
   const breadcrumbTrail = document.getElementById("breadcrumbTrail");
@@ -177,10 +181,13 @@ const stateTitle = document.getElementById("stateTitle");
     }
    
   // --- Breadcrumb ---
-  setBreadcrumb(breadcrumbTrail, [
-      { label: "Explore", href: "explore.html" },
-      { label: state.name }
-    ]);
+  const stateBreadcrumb = document.getElementById("breadcrumbTrail");
+    if (stateBreadcrumb) {
+      setBreadcrumb(stateBreadcrumb, [
+        { label: "Explore", href: "explore.html" },
+        { label: state.name }
+      ]);
+    }
   }
 
 
@@ -198,7 +205,6 @@ const cityBreadcrumb = document.getElementById("breadcrumbTrail");
 
     if (categoryGrid) {
       categoryGrid.innerHTML = "";
-
       Object.entries(city.categories || {}).forEach(([catKey, category]) => {
 
         const section = document.createElement("div");
@@ -228,6 +234,7 @@ const cityBreadcrumb = document.getElementById("breadcrumbTrail");
         categoryGrid.appendChild(section);
       });
     }
+  }
 
 // --- Breadcrumb ---
     setBreadcrumb(cityBreadcrumb, [
@@ -274,22 +281,27 @@ const subTitle = document.getElementById("subcategoryTitle");
       content.appendChild(introDiv);
     }
 
+
     // =================== NORMAL CARDS ===================
-    if (normalItems.length === 0) {
+     if (normalItems.length === 0) {
       content.innerHTML += `<p class="empty-state">No items found.</p>`;
     } else {
-      content.innerHTML += normalItems.map(place => `
-        <div class="detail-card">
+      normalItems.forEach(place => {
+        const card = document.createElement("div");
+        card.className = "detail-card";
+
+        card.innerHTML = `
           <img src="${place.img || "Images/default.jpg"}" alt="${place.name}">
-          
           <div class="detail-info">
             <h3>${place.name}</h3>
             ${place.description ? `<p>${place.description}</p>` : ""}
             ${place.address ? `<p><strong>Address:</strong> ${place.address}</p>` : ""}
-            ${place.link && place.link !== "#" ? `<a href="${place.link}" target="_blank">Visit Website</a>` : ""}
+            ${place.link ? `<a href="${place.link}" target="_blank">Visit Website</a>` : ""}
           </div>
-        </div>
-      `).join("");
+        `;
+
+        content.appendChild(card);
+      });
     }
   }
 
@@ -380,5 +392,5 @@ const subTitle = document.getElementById("subcategoryTitle");
   filterCategory?.addEventListener("change", function() {
     renderTips(filterCategory.value);
     });
-
+  })
 })();
