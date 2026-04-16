@@ -227,8 +227,8 @@ section {
 /* ================= Explore Page States Grid ================= */
 .explore-page {
   max-width: 1400px;
-  margin: 120px auto 0px; /* push down below fixed nav */
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 70px 20px 40px;
   text-align: center;
 
    /* Background image */
@@ -260,22 +260,75 @@ section {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-.explore-page h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+.frosted-container h1 {
+  font-size: 1.8rem;
   color: white;
+  margin: 0;
 }
+
+.explore-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.explore-page .page-header {
+  text-align: center;
+  color: white;
+  margin: 40px auto 30px;
+  padding: 25px 30px;
+  max-width: 750px;
+
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+/* ================= State Page================= */
 
 /* ================= Individual States Page================= */
 .page-header {
   text-align: center;
   color: white;
-  margin-bottom: 20px;
+
+  margin: 40px auto 30px;
+  padding: 25px 30px;
+
+  max-width: 750px;
+
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.page-header h1 {
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
+
+.page-header::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin: 15px auto 0;
+  background: #a0a64a;
+  border-radius: 10px;
+  opacity: 0.7;
 }
 
 .page-subtitle {
   opacity: 0.85;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .card-title {
@@ -294,24 +347,39 @@ section {
 
 /* ================= State Search Bar ================= */
 .state-search {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 15px;
 }
 
 .state-search input {
-  width: 80%;
-  max-width: 600px;
-  padding: 10px 15px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+  width: 90%;
+  max-width: 900px;
+  padding: 14px 18px;
+  border-radius: 999px; /* pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
   font-size: 1rem;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+
   transition: all 0.3s ease;
+}
+
+.state-search input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .state-search input:focus {
   outline: none;
   border-color: #a0a64a;
-  box-shadow: 0 0 8px rgba(160, 166, 74, 0.5);
+  box-shadow: 0 0 12px rgba(160, 166, 74, 0.6);
+  transform: translateY(-1px);
 }
 
 
@@ -327,62 +395,66 @@ section {
 
 /* ================= State Cards ================= */
 .state-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
   text-decoration: none;
 
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
 
   color: white;
 
   transition: all 0.35s ease;
-
-  position: relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
 }
 
+/* subtle gradient overlay */
 .state-card::after {
   content: "";
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-
-  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.1),
+    transparent
+  );
+  pointer-events: none;
 }
 
- 
 /* IMAGE */
 .state-card img {
-width: 100%;
-  height: 130px;
+  width: 100%;
+  height: 140px;
   object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
 /* TITLE */
 .state-card span {
-  padding: 12px;
+  padding: 14px;
   font-weight: 600;
   font-size: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 /* HOVER EFFECT */
 .state-card:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+  transform: translateY(-10px);
+  background: rgba(160,166,74,0.18);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 }
 
-
 /* IMAGE ZOOM ON HOVER */
-.state-card:hover {
-  transform: translateY(-8px);
-  background: rgba(160,166,74,0.25);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+.state-card:hover img {
+  transform: scale(1.08);
 }
 
 /* ================= State Page Container ================= */
