@@ -160,6 +160,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const city = state?.cities?.[cityKey];
 
+  console.log(stateKey, cityKey, state, city);
   if (cityTitle && city) {
 
     document.title = `Neighborhood Navigator - ${city.name}`;
@@ -198,7 +199,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    const cityBreadcrumb = document.getElementById("cityBreadcrumb");
+    const cityBreadcrumb = document.getElementById("breadcrumbTrail");
 
     setBreadcrumb(cityBreadcrumb, [
       { label: "Explore", href: "explore.html" },

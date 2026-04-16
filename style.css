@@ -231,10 +231,8 @@ section {
   padding: 0 20px;
   text-align: center;
 
-}
-
-body.explore-bg {
-  background-image: url('Images/landing\ page\ image.webp');
+   /* Background image */
+  background-image: url('Images/landing\ page\ image.webp'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -408,22 +406,26 @@ width: 100%;
 
 /* ================= Breadcrumb ================= */
 .breadcrumb {
+  align-self: flex-start;
+  width: 100%;
   text-align: left;
   font-size: 14px;
   margin: 10px 0 20px;
+  color: white;
 }
 
 .breadcrumb a {
-  color: #0077cc;
+  color: white; 
   text-decoration: none;
 }
 
 .breadcrumb span {
-  color: #555;
+  color: white;
 }
 
 .crumb-sep {
   margin: 0 6px;
+  color: white;
 }
 
 /* ================= Content Wrapper: Sidebar + Grid ================= */
@@ -507,7 +509,10 @@ width: 100%;
   gap: 15px;
 }
 
-
+/* ================= CITY PAGE ================= */
+.city-page .frosted-container {
+  margin-top: 80px;
+}
 
 /* ================= City Cards Grid ================= */
 .states-grid::-webkit-scrollbar {
