@@ -5,7 +5,42 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
+
+  animation: fadeInPage 0.6s ease-in;
 }
+
+@keyframes fadeInPage {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* headings */
+h1, h2, h3 {
+  letter-spacing: 0.5px;
+}
+
+h1 {
+  font-weight: 700;
+}
+
+.page-subtitle,
+.city-subtitle {
+  font-size: 1rem;
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+/* spacing */
+section {
+  margin-bottom: 30px;
+}
+
 
 /* navigation */
 
@@ -159,14 +194,16 @@ body {
   color: white;
   text-decoration: none;
   padding: 15px 30px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
-  transition: 0.3s;
+
+  transition: all 0.25s ease;
 }
 
 .btn-primary:hover {
-  background-color: #e06b5a;
-  transform: translateY(-2px);
+   background-color: #e06b5a;
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 
@@ -190,15 +227,16 @@ body {
 /* ================= Explore Page States Grid ================= */
 .explore-page {
   max-width: 1400px;
-  margin: 120px auto 0px; /* push down below fixed nav */
-  padding: 0 20px;
+  margin: 0 auto;
+  padding: 70px 20px 40px;
   text-align: center;
 
    /* Background image */
-  background-image: url('Images/landing\ page\ image.jpg'); 
+  background-image: url('Images/landing\ page\ image.webp'); 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* Frosted container */
@@ -208,7 +246,7 @@ body {
   align-items: center;
   gap: 30px;
 
-  padding: 30px 30px 15px 30px;
+  padding: 40px 30px 25px 30px;
   max-width: 1400px;
   margin: 0 auto;
 
@@ -222,22 +260,75 @@ body {
   box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
-.explore-page h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+.frosted-container h1 {
+  font-size: 1.8rem;
   color: white;
+  margin: 0;
 }
+
+.explore-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+.explore-page .page-header {
+  text-align: center;
+  color: white;
+  margin: 40px auto 30px;
+  padding: 25px 30px;
+  max-width: 750px;
+
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+
+/* ================= State Page================= */
 
 /* ================= Individual States Page================= */
 .page-header {
   text-align: center;
   color: white;
-  margin-bottom: 20px;
+
+  margin: 40px auto 30px;
+  padding: 25px 30px;
+
+  max-width: 750px;
+
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.page-header h1 {
+  font-size: 2.6rem;
+  margin-bottom: 10px;
+}
+
+.page-header::after {
+  content: "";
+  display: block;
+  width: 120px;
+  height: 3px;
+  margin: 15px auto 0;
+  background: #a0a64a;
+  border-radius: 10px;
+  opacity: 0.7;
 }
 
 .page-subtitle {
   opacity: 0.85;
-  font-size: 1rem;
+  font-size: 1.1rem;
 }
 
 .card-title {
@@ -256,24 +347,39 @@ body {
 
 /* ================= State Search Bar ================= */
 .state-search {
-  text-align: center;
+  display: flex;
+  justify-content: center;
   margin-bottom: 15px;
 }
 
 .state-search input {
-  width: 80%;
-  max-width: 600px;
-  padding: 10px 15px;
-  border-radius: 10px;
-  border: 1px solid #ccc;
+  width: 90%;
+  max-width: 900px;
+  padding: 14px 18px;
+  border-radius: 999px; /* pill shape */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+
   font-size: 1rem;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+
   transition: all 0.3s ease;
+}
+
+.state-search input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .state-search input:focus {
   outline: none;
   border-color: #a0a64a;
-  box-shadow: 0 0 8px rgba(160, 166, 74, 0.5);
+  box-shadow: 0 0 12px rgba(160, 166, 74, 0.6);
+  transform: translateY(-1px);
 }
 
 
@@ -289,28 +395,37 @@ body {
 
 /* ================= State Cards ================= */
 .state-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-
-  padding: 12px;
-  border-radius: 15px;
+  border-radius: 18px;
+  overflow: hidden;
   text-decoration: none;
 
-  background: rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
 
   color: white;
-  text-align: center;
-  overflow: hidden;
 
-  /* IMPORTANT: ensures cards are always visible */
-  opacity: 1;
-  transform: none;
+  transition: all 0.35s ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
 
-  transition: all 0.3s ease;
+/* subtle gradient overlay */
+.state-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.55),
+    rgba(0,0,0,0.1),
+    transparent
+  );
+  pointer-events: none;
 }
 
 
@@ -327,38 +442,32 @@ body {
 }
  
 /* IMAGE */
-.state-card img,
-.detail-card img {
+.state-card img {
   width: 100%;
-  aspect-ratio: 16 / 10;
-
+  height: 140px;
   object-fit: cover;
-  object-position: center;
-
-  border-radius: 14px;
+  transition: transform 0.5s ease;
 }
 
 /* TITLE */
 .state-card span {
-  font-size: 1rem;
+  padding: 14px;
   font-weight: 600;
-  color: white;
-  padding: 5px 0;
+  font-size: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 /* HOVER EFFECT */
 .state-card:hover {
-  transform: translateY(-6px) scale(1.02);
-  background: rgba(160,166,74,0.3);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transform: translateY(-10px);
+  background: rgba(160,166,74,0.18);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
 }
 
-
 /* IMAGE ZOOM ON HOVER */
-.state-card:hover {
-  transform: translateY(-8px);
-  background: rgba(160,166,74,0.25);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+.state-card:hover img {
+  transform: scale(1.08);
 }
 
 /* ================= State Page Container ================= */
@@ -382,10 +491,26 @@ body {
 
 /* ================= Breadcrumb ================= */
 .breadcrumb {
-  font-size: 0.8rem;
-  color: #fff;
-  margin-bottom: 10px;
-  opacity: 0.85;
+  align-self: flex-start;
+  width: 100%;
+  text-align: left;
+  font-size: 14px;
+  margin: 10px 0 20px;
+  color: white;
+}
+
+.breadcrumb a {
+  color: white; 
+  text-decoration: none;
+}
+
+.breadcrumb span {
+  color: white;
+}
+
+.crumb-sep {
+  margin: 0 6px;
+  color: white;
 }
 
 /* ================= Content Wrapper: Sidebar + Grid ================= */
@@ -438,6 +563,10 @@ body {
   color: white;
 }
 
+.state-sidebar ul li a:hover {
+  padding-left: 12px;
+}
+
 .sidebar-title {
   color: #a0a64a;
   margin-bottom: 10px;
@@ -465,7 +594,10 @@ body {
   gap: 15px;
 }
 
-
+/* ================= CITY PAGE ================= */
+.city-page .frosted-container {
+  margin-top: 80px;
+}
 
 /* ================= City Cards Grid ================= */
 .states-grid::-webkit-scrollbar {
