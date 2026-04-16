@@ -428,6 +428,19 @@ section {
   pointer-events: none;
 }
 
+
+.state-page .page-header {
+  text-align: center;
+  color: white;
+  margin: 20px auto 20px;
+  padding: 20px;
+
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+}
+ 
 /* IMAGE */
 .state-card img {
   width: 100%;
