@@ -3,7 +3,7 @@ const DATA = {
   // =================== Alabama ===================
     alabama: {
   name: "Alabama",
-  img: "Images/Alabama/alabamaprofile.jpg",
+  img: "Images/Alabama/alabamaprofile.webp",
   cities: {
 
     montgomery: {
@@ -56,7 +56,7 @@ const DATA = {
 // =================== Alaska ===================
 alaska: {
   name: "Alaska",
-  img: "Images/Alaska/alaskaprofile.jpg",
+  img: "Images/Alaska/alaskaprofile.webp",
   cities: {
 
     anchorage: {
@@ -91,7 +91,7 @@ alaska: {
 // =================== Arizona ===================
 arizona: {
   name: "Arizona",
-  img: "Images/Arizona/arizonaprofile.jpg",
+  img: "Images/Arizona/arizonaprofile.webp",
   cities: {
 
     phoenix: {
@@ -126,7 +126,7 @@ arizona: {
 // =================== Arkansas ===================
 arkansas: {
   name: "Arkansas",
-  img: "Images/Arkansas/arkansasprofile.jpg",
+  img: "Images/Arkansas/arkansasprofile.webp",
   cities: {
 
     littlerock: {
@@ -161,7 +161,7 @@ arkansas: {
 // =================== California ===================
 california: {
   name: "California",
-  img: "Images/California/californiaprofile.jpg",
+  img: "Images/California/californiaprofile.webp",
   cities: {
 
     losangeles: {
@@ -196,7 +196,7 @@ california: {
 // =================== Colorado ===================
 colorado: {
   name: "Colorado",
-  img: "Images/Colorado/coloradoprofile.jpg",
+  img: "Images/Colorado/coloradoprofile.webp",
   cities: {
 
     denver: {
@@ -231,13 +231,13 @@ colorado: {
 // =================== Connecticut ===================
   connecticut: {
     name: "Connecticut",
-    img: "Images/Connecticut/ctstatephoto.jpg",
+    img: "Images/Connecticut/ctstatephoto.webp",
     cities: {
 
       // =================== HARTFORD ===================
       hartford: {
         name: "Hartford",
-        img: "Images/hartfordct.jpg",
+        img: "Images/hartfordct.webp",
         categories: {
 
           education: {
@@ -479,7 +479,7 @@ colorado: {
       // =================== DANBURY ===================
       danbury: {
         name: "Danbury",
-        img: "Images/danburyct.png",
+        img: "Images/danburyct.webp",
         categories: {
           education: {
             label: "Education",
@@ -504,7 +504,7 @@ colorado: {
       // =================== NORWALK ===================
       norwalk: {
         name: "Norwalk",
-        img: "Images/norwalkct.png",
+        img: "Images/norwalkct.webp",
         categories: {
           education: {
             label: "Education",
@@ -529,7 +529,7 @@ colorado: {
       // =================== BRIDGEPORT ===================
       bridgeport: {
         name: "Bridgeport",
-        img: "Images/bridgeportct.png",
+        img: "Images/bridgeportct.webp",
         categories: {
           education: {
             label: "Education",
@@ -554,7 +554,7 @@ colorado: {
       // =================== NEW BRITAIN ===================
       newbritain: {
         name: "New Britain",
-        img: "Images/newbritainct.png",
+        img: "Images/newbritainct.webp",
         categories: {
           education: {
             label: "Education",
@@ -579,7 +579,7 @@ colorado: {
       // =================== NEW LONDON ===================
       newlondon: {
         name: "New London",
-        img: "Images/newlondonct.png",
+        img: "Images/newlondonct.webp",
         categories: {
           education: {
             label: "Education",
@@ -606,7 +606,7 @@ colorado: {
 // =================== Delaware ===================
 delaware: {
   name: "Delaware",
-  img: "Images/Delaware/delawareprofile.jpg",
+  img: "Images/Delaware/delawareprofile.webp",
   cities: {
 
     wilmington: {
@@ -641,7 +641,7 @@ delaware: {
 // =================== Florida ===================
 florida: {
   name: "Florida",
-  img: "Images/Florida/floridaprofile.jpg",
+  img: "Images/Florida/floridaprofile.webp",
   cities: {
 
     miami: {
@@ -676,7 +676,7 @@ florida: {
 // =================== Georgia ===================
 georgia: {
   name: "Georgia",
-  img: "Images/Georgia/georgiaprofile.jpg",
+  img: "Images/Georgia/georgiaprofile.webp",
   cities: {
 
     atlanta: {
@@ -711,7 +711,7 @@ georgia: {
 // =================== Hawaii ===================
 hawaii: {
   name: "Hawaii",
-  img: "Images/Hawaii/hawaiiprofile.jpg",
+  img: "Images/Hawaii/hawaiiprofile.webp",
   cities: {
 
     honolulu: {
@@ -746,7 +746,7 @@ hawaii: {
 // =================== Idaho ===================
 idaho: {
   name: "Idaho",
-  img: "Images/Idaho/idahoprofile.jpg",
+  img: "Images/Idaho/idahoprofile.webp",
   cities: {
 
     boise: {
@@ -781,7 +781,7 @@ idaho: {
 // =================== Illinois ===================
 illinois: {
   name: "Illinois",
-  img: "Images/Illinois/illinoisprofile.jpg",
+  img: "Images/Illinois/illinoisprofile.webp",
   cities: {
 
     chicago: {
@@ -816,7 +816,7 @@ illinois: {
 // =================== Indiana ===================
 indiana: {
   name: "Indiana",
-  img: "Images/Indiana/indianaprofile.jpg",
+  img: "Images/Indiana/indianaprofile.webp",
   cities: {
 
     fortwayne: {
@@ -851,7 +851,7 @@ indiana: {
 // =================== Iowa ===================
 iowa: {
   name: "Iowa",
-  img: "Images/Iowa/iowaprofile.jpg",
+  img: "Images/Iowa/iowaprofile.webp",
   cities: {
 
     cedarrapids: {
@@ -886,7 +886,7 @@ iowa: {
 // =================== Kansas ===================
 kansas: {
   name: "Kansas",
-  img: "Images/Kansas/kansasprofile.jpg",
+  img: "Images/Kansas/kansasprofile.webp",
   cities: {
 
     wichita: {
@@ -921,7 +921,7 @@ kansas: {
 // =================== Kentucky ===================
 kentucky: {
   name: "Kentucky",
-  img: "Images/Kentucky/kentuckyprofile.jpg",
+  img: "Images/Kentucky/kentuckyprofile.webp",
   cities: {
 
     louisville: {
@@ -956,7 +956,7 @@ kentucky: {
 // =================== Louisiana ===================
 louisiana: {
   name: "Louisiana",
-  img: "Images/Louisiana/louisianaprofile.jpg",
+  img: "Images/Louisiana/louisianaprofile.webp",
   cities: {
 
     lafayette: {
@@ -991,7 +991,7 @@ louisiana: {
 // =================== Maine ===================
 maine: {
   name: "Maine",
-  img: "Images/Maine/maineprofile.jpg",
+  img: "Images/Maine/maineprofile.webp",
   cities: {
 
     portland: {
@@ -1026,7 +1026,7 @@ maine: {
 // =================== Maryland ===================
 maryland: {
   name: "Maryland",
-  img: "Images/Maryland/marylandprofile.jpg",
+  img: "Images/Maryland/marylandprofile.webp",
   cities: {
 
     annapolis: {
@@ -1061,7 +1061,7 @@ maryland: {
 // =================== Massachusetts ===================
 massachusetts: {
   name: "Massachusetts",
-  img: "Images/Massachusetts/massprofile.jpg",
+  img: "Images/Massachusetts/massprofile.webp",
   cities: {
 
     boston: {
@@ -1096,7 +1096,7 @@ massachusetts: {
 // =================== Michigan ===================
 michigan: {
   name: "Michigan",
-  img: "Images/Michigan/michiganprofile.jpg",
+  img: "Images/Michigan/michiganprofile.webp",
   cities: {
 
     annarbor: {
@@ -1131,7 +1131,7 @@ michigan: {
 // =================== Minnesota ===================
 minnesota: {
   name: "Minnesota",
-  img: "Images/Minnesota/minnesotaprofile.jpg",
+  img: "Images/Minnesota/minnesotaprofile.webp",
   cities: {
 
     minneapolis: {
@@ -1166,7 +1166,7 @@ minnesota: {
 // =================== Mississippi ===================
 mississippi: {
   name: "Mississippi",
-  img: "Images/Mississippi/mississippiprofile.jpg",
+  img: "Images/Mississippi/mississippiprofile.webp",
   cities: {
 
     greenville: {
@@ -1201,7 +1201,7 @@ mississippi: {
 // =================== Missouri ===================
 missouri: {
   name: "Missouri",
-  img: "Images/Missouri/missouriprofile.jpg",
+  img: "Images/Missouri/missouriprofile.webp",
   cities: {
 
     stlouis: {
@@ -1236,7 +1236,7 @@ missouri: {
 // =================== Montana ===================
 montana: {
   name: "Montana",
-  img: "Images/Montana/montanaprofile.jpg",
+  img: "Images/Montana/montanaprofile.webp",
   cities: {
 
     billings: {
@@ -1271,7 +1271,7 @@ montana: {
 // =================== Nebraska ===================
 nebraska: {
   name: "Nebraska",
-  img: "Images/Nebraska/nebraskaprofile.jpg",
+  img: "Images/Nebraska/nebraskaprofile.webp",
   cities: {
 
     omaha: {
@@ -1306,7 +1306,7 @@ nebraska: {
 // =================== Nevada ===================
 nevada: {
   name: "Nevada",
-  img: "Images/Nevada/nevadaprofile.jpg",
+  img: "Images/Nevada/nevadaprofile.webp",
   cities: {
 
     reno: {
@@ -1341,7 +1341,7 @@ nevada: {
 // =================== New Hampshire ===================
 newhampshire: {
   name: "New Hampshire",
-  img: "Images/Newhampshire/newhampshireprofile.jpg",
+  img: "Images/Newhampshire/newhampshireprofile.webp",
   cities: {
 
     portsmouth: {
@@ -1376,7 +1376,7 @@ newhampshire: {
 // =================== New Jersey ===================
 newjersey: {
   name: "New Jersey",
-  img: "Images/Newjersey/newjerseyprofile.jpg",
+  img: "Images/Newjersey/newjerseyprofile.webp",
   cities: {
 
     newark: {
@@ -1411,7 +1411,7 @@ newjersey: {
 // =================== New Mexico ===================
 newmexico: {
   name: "New Mexico",
-  img: "Images/Newmexico/newmexicoprofile.jpg",
+  img: "Images/Newmexico/newmexicoprofile.webp",
   cities: {
 
     santafe: {
@@ -1446,7 +1446,7 @@ newmexico: {
 // =================== New York ===================
 newyork: {
   name: "New York",
-  img: "Images/Newyork/newyorkprofile.jpg",
+  img: "Images/Newyork/newyorkprofile.webp",
   cities: {
 
     albany: {
@@ -1481,7 +1481,7 @@ newyork: {
 // =================== North Carolina ===================
 northcarolina: {
   name: "North Carolina",
-  img: "Images/Northcarolina/northcarolinaprofile.jpg",
+  img: "Images/Northcarolina/northcarolinaprofile.webp",
   cities: {
 
     raleigh: {
@@ -1516,7 +1516,7 @@ northcarolina: {
 // =================== North Dakota ===================
 northdakota: {
   name: "North Dakota",
-  img: "Images/Northdakota/northdakotaprofile.jpg",
+  img: "Images/Northdakota/northdakotaprofile.webp",
   cities: {
 
     grandforks: {
@@ -1551,7 +1551,7 @@ northdakota: {
 // =================== Ohio ===================
 ohio: {
   name: "Ohio",
-  img: "Images/Ohio/ohioprofile.jpg",
+  img: "Images/Ohio/ohioprofile.webp",
   cities: {
 
     cleveland: {
@@ -1586,7 +1586,7 @@ ohio: {
 // =================== Oklahoma ===================
 oklahoma: {
   name: "Oklahoma",
-  img: "Images/Oklahoma/oklahomaprofile.jpg",
+  img: "Images/Oklahoma/oklahomaprofile.webp",
   cities: {
 
     tulsa: {
@@ -1621,7 +1621,7 @@ oklahoma: {
 // =================== Oregon ===================
 oregon: {
   name: "Oregon",
-  img: "Images/Oregon/oregonprofile.jpg",
+  img: "Images/Oregon/oregonprofile.webp",
   cities: {
 
     portland: {
@@ -1656,7 +1656,7 @@ oregon: {
 // =================== Pennsylvania ===================
 pennsylvania: {
   name: "Pennsylvania",
-  img: "Images/Pennsylvania/pennsylvaniaprofile.jpg",
+  img: "Images/Pennsylvania/pennsylvaniaprofile.webp",
   cities: {
 
     pittsburg: {
@@ -1691,7 +1691,7 @@ pennsylvania: {
 // =================== Rhode Island ===================
 rhodeisland: {
   name: "Rhode Island",
-  img: "Images/Rhodeisland/rhodeislandprofile.jpg",
+  img: "Images/Rhodeisland/rhodeislandprofile.webp",
   cities: {
 
     newport: {
@@ -1726,7 +1726,7 @@ rhodeisland: {
 // =================== South Carolina ===================
 southcarolina: {
   name: "South Carolina",
-  img: "Images/Southcarolina/southcarolinaprofile.jpg",
+  img: "Images/Southcarolina/southcarolinaprofile.webp",
   cities: {
 
     columbia: {
@@ -1761,7 +1761,7 @@ southcarolina: {
 // =================== South Dakota ===================
 southdakota: {
   name: "South Dakota",
-  img: "Images/Southdakota/southdakotaprofile.jpg",
+  img: "Images/Southdakota/southdakotaprofile.webp",
   cities: {
 
     siouxfalls: {
@@ -1796,7 +1796,7 @@ southdakota: {
 // =================== Tennessee ===================
 tennessee: {
   name: "Tennessee",
-  img: "Images/Tennessee/tennesseeprofile.jpg",
+  img: "Images/Tennessee/tennesseeprofile.webp",
   cities: {
 
     memphis: {
@@ -1831,7 +1831,7 @@ tennessee: {
 // =================== Texas ===================
 texas: {
   name: "Texas",
-  img: "Images/Texas/texasprofile.jpg",
+  img: "Images/Texas/texasprofile.webp",
   cities: {
 
     fortworth: {
@@ -1866,7 +1866,7 @@ texas: {
 // =================== Utah ===================
 utah: {
   name: "Utah",
-  img: "Images/Utah/utahprofile.jpg",
+  img: "Images/Utah/utahprofile.webp",
   cities: {
 
     saltlakecity: {
@@ -1901,7 +1901,7 @@ utah: {
 // =================== Vermont ===================
 vermont: {
   name: "Vermont",
-  img: "Images/Vermont/vermontprofile.jpg",
+  img: "Images/Vermont/vermontprofile.webp",
   cities: {
 
     burlington: {
@@ -1936,7 +1936,7 @@ vermont: {
 // =================== Virginia ===================
 virginia: {
   name: "Virginia",
-  img: "Images/Virginia/virginiaprofile.jpg",
+  img: "Images/Virginia/virginiaprofile.webp",
   cities: {
 
     richmond: {
@@ -1971,7 +1971,7 @@ virginia: {
 // =================== Washington ===================
 washington: {
   name: "Washington",
-  img: "Images/Washington/washingtonprofile.jpg",
+  img: "Images/Washington/washingtonprofile.webp",
   cities: {
 
     spokane: {
@@ -2006,7 +2006,7 @@ washington: {
 // =================== West Virginia ===================
 westvirginia: {
   name: "West Virginia",
-  img: "Images/Westvirginia/westvirginiaprofile.jpg",
+  img: "Images/Westvirginia/westvirginiaprofile.webp",
   cities: {
 
     huntington: {
@@ -2041,7 +2041,7 @@ westvirginia: {
 // =================== Wisconsin ===================
 wisconsin: {
   name: "Wisconsin",
-  img: "Images/Wisconsin/wisconsinprofile.jpg",
+  img: "Images/Wisconsin/wisconsinprofile.webp",
   cities: {
 
     madison: {
@@ -2076,7 +2076,7 @@ wisconsin: {
 // =================== Wyoming ===================
 wyoming: {
   name: "Wyoming",
-  img: "Images/Wyoming/wyomingprofile.jpg",
+  img: "Images/Wyoming/wyomingprofile.webp",
   cities: {
 
     casper: {
