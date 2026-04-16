@@ -41,8 +41,55 @@ section {
   margin-bottom: 30px;
 }
 
+/* ================= General Page Layout - all pages ================= */
 
-/* navigation */
+.page-layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 70px 20px 40px;
+  text-align: center;
+}
+
+.page-bg {
+  background-image: url('Images/landing page image.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.page-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+}
+
+
+/* Frosted container */
+.frosted-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  padding: 40px 30px 25px 30px;
+  max-width: 1400px;
+  margin: 0 auto;
+
+  /* Frosted glass effect */
+  background: rgba(255, 255, 255, 0.1); /* semi-transparent */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border-radius: 15px;
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* ================= Navigation ================= */
 
 .main-nav {
   position: fixed; /* makes it overlay the hero */
@@ -224,67 +271,11 @@ section {
 }
 
 
-/* ================= Explore Page States Grid ================= */
-.explore-page {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 70px 20px 40px;
-  text-align: center;
-
-   /* Background image */
-  background-image: url('Images/landing\ page\ image.webp'); 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-
-/* Frosted container */
-.frosted-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30px;
-
-  padding: 40px 30px 25px 30px;
-  max-width: 1400px;
-  margin: 0 auto;
-
-  /* Frosted glass effect */
-  background: rgba(255, 255, 255, 0.1); /* semi-transparent */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  border-radius: 15px;
-  border: 1px solid rgba(255,255,255,0.2);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-}
-
+/* ================= Explore Page Grid ================= */
 .frosted-container h1 {
   font-size: 1.8rem;
   color: white;
   margin: 0;
-}
-
-.explore-page::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.25);
-  pointer-events: none;
-}
-
-.explore-page .page-header {
-  text-align: center;
-  color: white;
-  margin: 40px auto 30px;
-  padding: 25px 30px;
-  max-width: 750px;
-
-  background: rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 
