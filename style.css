@@ -231,11 +231,14 @@ section {
   padding: 0 20px;
   text-align: center;
 
-   /* Background image */
-  background-image: url('Images/landing\ page\ image.jpg'); 
+}
+
+body.explore-bg {
+  background-image: url('Images/landing\ page\ image.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* Frosted container */
