@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    const cityBreadcrumb = document.getElementById("cityBreadcrumb");
+    const cityBreadcrumb = document.getElementById("breadcrumbTrail");
 
     setBreadcrumb(cityBreadcrumb, [
       { label: "Explore", href: "explore.html" },
