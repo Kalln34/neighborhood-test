@@ -556,15 +556,17 @@ section {
 
 /* ================= CATEGORY GROUPING ================= */
 .category-section h2 {
+  margin: 0;
+  padding-left: 2px;
   color: #a0a64a;
-  margin-bottom: 15px;
-  margin-top: 5px;
 }
 
 .subcategory-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-  gap: 15px;
+  gap: 12px;
+  align-items: stretch;
+  align-items: start;
 }
 
 /* ================= CITY PAGE ================= */
@@ -573,12 +575,6 @@ section {
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(14px);
   max-width: 1300px;
-}
-
-.city-page {
-  background: radial-gradient(circle at top left, #4fa3a3, transparent 40%),
-              radial-gradient(circle at bottom right, #a0a64a, transparent 40%),
-              #1f3c4d;
 }
 
 .city-header {
@@ -625,6 +621,8 @@ section {
   gap: 20px;
   width: 100%;
   align-items: stretch; 
+
+  grid-auto-rows: 1fr;
 }
 
 .category-card {
@@ -633,6 +631,7 @@ section {
   justify-content: space-between; /* 🔥 FIXES uneven layout */
 
   height: 100%; /* ensures equal height in grid */
+  min-height: 100%;
 
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(10px);
@@ -648,15 +647,19 @@ section {
   transition: all 0.25s ease;
 }
 
+.category-section > h2 {
+  font-size: 1.2rem;
+}
+
 .category-card h3 {
-  min-height: 2.4em;
-  font-size: 1.1rem;
+  min-height: 2.6em;
+  font-size: 0.60rem; 
   margin-bottom: 8px;
 }
 
 .category-card p {
-  min-height: 3.5em;
-  font-size: 0.9rem;
+  min-height: 4em;
+  font-size: 0.80rem;
   opacity: 0.75;
   margin-bottom: 15px;
 }
@@ -686,16 +689,16 @@ section {
 }
 
 .category-section {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
   width: 100%;
   padding: 20px;
   border-radius: 14px;
 
   background: rgba(0, 0, 0, 0.12);
   border: 1px solid rgba(255,255,255,0.08);
-}
 
-.category-section:first-of-type {
-  margin-top: 20px;
 }
 
 .category-section:not(:last-child) {
