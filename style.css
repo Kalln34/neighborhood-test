@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -773,7 +777,35 @@ section {
 }
 
 
+/* ================= subcategory card page ================= */
+body.subcategory-page .frosted-container {
+   max-width: 1100px;   
+  margin: 100px auto 40px;
+  padding: 30px;
+  align-items: stretch;
+  text-align: left;
+  background: rgba(255,255,255,0.08);
+}
 
+body.subcategory-page {
+  background: radial-gradient(circle at top left, #4fa3a3, transparent 40%),
+              radial-gradient(circle at bottom right, #a0a64a, transparent 40%),
+              #1f3c4d;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.subcategory-page main {
+  flex: 1;
+}
+
+#subcategoryContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
 
 /* ================= subcategory detail cards ================= */
 .details-list {
@@ -783,24 +815,34 @@ section {
 }
 
 .detail-card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  max-width: 240px;
-
-  border-radius: 16px;
-  padding: 16px;
+   width: 100%;
+  max-width: 900px;
 
   display: flex;
-  align-items: center;
   gap: 16px;
+  align-items: center;
 
-  width: 100%;
-  max-width: 700px;
-  min-height: 140px;
+  padding: 16px;
 
-  margin: 0 auto;
+  background: rgba(20, 20, 20, 0.35);
+  backdrop-filter: blur(12px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
 
   color: white;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+
+  position: relative;
+}
+
+.detail-card h3,
+.detail-card p,
+.intro-card h2,
+.intro-card p {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
 
 
@@ -823,43 +865,51 @@ section {
 }
 
 .detail-card img {
-  width: 100px;
-  height: 100px;
-
-  object-fit: cover;
-  object-position: center;
-
+   width: 90px;
+  height: 90px;
   border-radius: 12px;
-
-  flex-shrink: 0;
-
-  text-align: left;
+  object-fit: cover;
 }
 
 .detail-info {
-  display: flex;
+ display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  text-align: left;
+  flex: 1;
+}
 
-  text-align: left; 
+.detail-card:hover {
+  transform: translateY(-4px);
+  background: rgba(160,166,74,0.18);
+}
+
+.detail-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  border-radius: 16px;
+  pointer-events: none;
 }
 
 /* ================= subcategory intro css ================= */
 
 .intro-section {
-  margin-bottom: 20px;
+   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
 .intro-card {
-  background: rgba(255,255,255,0.15);
+  width: 100%;
+  background: rgba(20, 20, 20, 0.35);
   backdrop-filter: blur(12px);
-  border-radius: 15px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 18px 20px;
   color: white;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.18);
 }
 
 .intro-card h2 {
@@ -1271,22 +1321,30 @@ section {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 15px 40px;
-  background-color: #e2e1e1;
-  color: #3f8d86;
-  font-size: 0.55rem; /* smaller font */
+  padding: 18px 40px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #2f6f68;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  font-size: 0.70rem;
+  line-height: 1.4;
   box-sizing: border-box;
+
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .site-footer a {
   text-decoration: none;
-  color: #3f8d86;
+  color: #2f6f68;
   margin-left: 15px;
   transition: color 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 
 .site-footer a:hover {
   color: #f4978e;
+  transform: translateY(-1px);
 }
 
 .footer-left img {
@@ -1302,12 +1360,15 @@ section {
 .footer-center {
   text-align: center;
   flex: 1;
+  opacity: 0.85;
+  font-weight: 500;
 }
 
 .footer-right {
   display: flex;
-  gap: 12px;
+  gap: 16px;
 }
+
 
 /* ================= Mobile Responsive ================= */
 @media (max-width: 768px) {
@@ -1340,20 +1401,50 @@ section {
     font-size: 0.9rem;
   }
 
+  /* ================= Mobile Responsive footer ================= */
+  @media (max-width: 768px) {
   .site-footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    gap: 12px;
+    padding: 20px 16px;
+    font-size: 0.8rem;
+  }
+
+  .footer-right {
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
   }
 
-  .footer-left, .footer-center, .footer-right {
-    flex: none;
+  .site-footer a {
+    margin-left: 0; /* removes desktop spacing issue */
+    padding: 6px 8px; /* improves tap targets */
   }
 
-  .footer-right a {
-    margin-left: 0;
+  .footer-left {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
   }
+
+  .footer-left img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .footer-center {
+    order: 2;
+    opacity: 0.85;
+  }
+
+  .footer-right {
+    order: 3;
+  }
+}
+
 
   .state-search input {
     width: 80%;
