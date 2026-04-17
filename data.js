@@ -378,7 +378,7 @@ colorado: {
           },
 
           government: {
-            label: "Government and City Resources",
+            label: "City Information",
             subcategories: {
               state_government: {
                 label: "City Government and Community Resources",
