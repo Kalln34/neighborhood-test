@@ -796,6 +796,7 @@ section {
 
   width: 100%;
   max-width: 700px;
+  min-height: 140px;
 
   margin: 0 auto;
 
