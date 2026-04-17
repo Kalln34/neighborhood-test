@@ -37,12 +37,16 @@ h1 {
   font-weight: 700;
 }
 
-.page-subtitle,
-.city-subtitle {
-  font-size: 1rem;
-  opacity: 0.9;
+
+.page-subtitle {
+  text-align: center;
+  margin: 8px auto 25px;
   max-width: 600px;
+  font-size: 1rem;
+  opacity: 0.75;
+  color: #333;
 }
+
 
 /* spacing */
 section {
@@ -315,11 +319,6 @@ section {
   opacity: 0.7;
 }
 
-.page-subtitle {
-  opacity: 0.85;
-  font-size: 1.1rem;
-  color: #666;
-}
 
 .card-title {
   font-size: 1rem;
@@ -687,15 +686,6 @@ section {
   border: 1px solid rgba(255,255,255,0.08);
 
   align-self: stretch;
-}
-
-.page-subtitle {
-  text-align: center;
-  margin: 8px auto 25px;
-  max-width: 600px;
-  font-size: 1rem;
-  opacity: 0.75;
-  color: white;
 }
 
 .category-section:first-of-type {
