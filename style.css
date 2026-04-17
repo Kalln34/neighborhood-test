@@ -2,6 +2,14 @@
   margin: 0px; padding: 0px; border: 0px 
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -46,7 +54,7 @@ section {
 .page-layout {
   max-width: 1400px;
   margin: 0 auto;
-  padding: 70px 20px 40px;
+  padding: 60px 20px 40px;
   text-align: center;
 }
 
@@ -262,6 +270,13 @@ section {
   margin: 0;
 }
 
+.page-header .page-subtitle {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 500px;
+  line-height: 1.5;
+}
+
 
 /* ================= State Page================= */
 
@@ -270,7 +285,7 @@ section {
   text-align: center;
   color: #222;
 
-  margin: 40px auto 30px;
+  margin: 10px auto 15px;;
   padding: 25px 30px;
 
   max-width: 750px;
@@ -328,7 +343,7 @@ section {
 }
 
 .state-search input {
-  width: 90%;
+  width: 100%;
   max-width: 900px;
   padding: 14px 18px;
   border-radius: 999px; /* pill shape */
@@ -361,10 +376,9 @@ section {
 /* ================= States Grid ================= */
 .states-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 18px;
   width: 100%;
-
 }
 
 
@@ -391,17 +405,17 @@ section {
  
 /* IMAGE */
 .state-card img {
-  width: 100%;
-  height: 140px;
+   width: 100%;
+  height: 110px;        
   object-fit: cover;
   transition: transform 0.5s ease;
 }
 
 /* TITLE */
 .state-card span {
-  padding: 14px;
+  padding: 10px 10px;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.85rem;
   position: relative;
   z-index: 2;
   color: #333;
@@ -423,10 +437,10 @@ section {
 .state-frosted-container {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 12px;
   padding: 20px;
   max-width: 1400px;
-  margin: 20px auto 0px;
+  margin: 10px;
 
   height: auto;          /* let it expand naturally */
   min-height: calc(100vh - 80px); /* optional to fill viewport */
@@ -465,9 +479,9 @@ section {
 /* ================= Content Wrapper: Sidebar + Grid ================= */
 .content-wrapper {
   display: flex;
-  gap: 30px;
+  gap: 35px;
   width: 100%;
-  align-items: stretch;
+  align-items: flex-start;
 }
 
 /* ================= Sidebar ================= */
@@ -505,6 +519,7 @@ section {
   padding: 6px 8px;
   border-radius: 6px;
   transition: all 0.3s ease;
+  font-size: 0.8rem;
 }
 
 .state-sidebar ul li a:hover,
@@ -522,7 +537,9 @@ section {
 .sidebar-title {
   color: #a0a64a;
   margin-bottom: 10px;
+  margin-top: 10px;
   padding-left: 8px;
+  font-size: 0.9rem;
 }
 
 .content-wrapper {
@@ -531,13 +548,10 @@ section {
 }
 
 /* ================= CATEGORY GROUPING ================= */
-.category-section {
-  margin-bottom: 30px;
-}
-
 .category-section h2 {
   color: #a0a64a;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 5px;
 }
 
 .subcategory-grid {
@@ -548,10 +562,162 @@ section {
 
 /* ================= CITY PAGE ================= */
 .city-page .frosted-container {
-  margin-top: 80px;
+  margin-top: 60px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(14px);
+  max-width: 1300px;
+}
+
+.city-page {
+  background: radial-gradient(circle at top left, #4fa3a3, transparent 40%),
+              radial-gradient(circle at bottom right, #a0a64a, transparent 40%),
+              #1f3c4d;
+}
+
+.city-header {
+  text-align: center;
+  color: white;
+
+  padding: 25px 30px;
+  margin: 10px auto 10px;
+  max-width: 700px;
+
+  background: rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(10px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.city-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 8px;
+}
+
+.city-header::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 3px;
+  margin: 12px auto 0;
+  background: #a0a64a;
+  border-radius: 10px;
+}
+
+
+.city-main {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* ================= City Cards Grid ================= */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.category-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  min-height: 140px; /* makes them uniform */
+  min-width: 0;
+  overflow-wrap: break-word;
+
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(12px);
+
+  border-radius: 18px;
+  padding: 20px;
+
+  text-align: center;
+  color: white;
+  text-decoration: none;
+
+  border: 1px solid rgba(255,255,255,0.12);
+
+  transition: all 0.25s ease;
+}
+
+.category-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.15rem;
+  font-weight: 600;
+}
+
+.category-card p {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  line-height: 1.3;
+  margin-bottom: auto;
+}
+
+.category-card:hover {
+  transform: translateY(-4px);
+  background: rgba(160,166,74,0.18);
+  border-color: rgba(160,166,74,0.4);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.category-card::before {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background: #a0a64a;
+  border-radius: 10px;
+  margin: 0 auto 10px;
+}
+
+.category-section {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto 50px; /* keep spacing between sections */
+  padding: 20px 20px 25px;
+
+  border-radius: 16px;
+  background: rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  align-self: stretch;
+}
+
+.page-subtitle {
+  text-align: center;
+  margin: 8px auto 25px;
+  max-width: 600px;
+  font-size: 1rem;
+  opacity: 0.75;
+  color: white;
+}
+
+.category-section:first-of-type {
+  margin-top: 20px;
+}
+
+.category-section:not(:last-child) {
+  position: relative;
+}
+
+.category-section:not(:last-child)::after {
+  content: "";
+  display: block;
+  height: 1px;
+  margin-top: 30px;
+  background: rgba(255,255,255,0.08);
+}
+
+
+
+/* =================  ================= */
+
 .states-grid::-webkit-scrollbar {
   width: 6px;
 }
@@ -562,12 +728,6 @@ section {
 }
 
 
-.section-title {
-  color: white;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
 /* ================= CATEGORY and EXPLORE background generic css ================= */
 .explore-page,
 .city-page {
@@ -577,7 +737,35 @@ section {
 }
 
 
+/* ================= subcategory card page ================= */
+body.subcategory-page .frosted-container {
+   max-width: 1100px;   
+  margin: 100px auto 40px;
+  padding: 30px;
+  align-items: stretch;
+  text-align: left;
+  background: rgba(255,255,255,0.08);
+}
 
+body.subcategory-page {
+  background: radial-gradient(circle at top left, #4fa3a3, transparent 40%),
+              radial-gradient(circle at bottom right, #a0a64a, transparent 40%),
+              #1f3c4d;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body.subcategory-page main {
+  flex: 1;
+}
+
+#subcategoryContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
 
 /* ================= subcategory detail cards ================= */
 .details-list {
@@ -587,23 +775,34 @@ section {
 }
 
 .detail-card {
-  background: rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  max-width: 240px;
-
-  border-radius: 16px;
-  padding: 16px;
+   width: 100%;
+  max-width: 900px;
 
   display: flex;
-  align-items: center;
   gap: 16px;
+  align-items: center;
 
-  width: 100%;
-  max-width: 700px;
+  padding: 16px;
 
-  margin: 0 auto;
+  background: rgba(20, 20, 20, 0.35);
+  backdrop-filter: blur(12px);
+
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.15);
 
   color: white;
+
+  transition: transform 0.2s ease, background 0.2s ease;
+
+  position: relative;
+}
+
+.detail-card h3,
+.detail-card p,
+.intro-card h2,
+.intro-card p {
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
 }
 
 
@@ -626,43 +825,51 @@ section {
 }
 
 .detail-card img {
-  width: 100px;
-  height: 100px;
-
-  object-fit: cover;
-  object-position: center;
-
+   width: 90px;
+  height: 90px;
   border-radius: 12px;
-
-  flex-shrink: 0;
-
-  text-align: left;
+  object-fit: cover;
 }
 
 .detail-info {
-  display: flex;
+ display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  text-align: left;
+  flex: 1;
+}
 
-  text-align: left; 
+.detail-card:hover {
+  transform: translateY(-4px);
+  background: rgba(160,166,74,0.18);
+}
+
+.detail-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.15);
+  border-radius: 16px;
+  pointer-events: none;
 }
 
 /* ================= subcategory intro css ================= */
 
 .intro-section {
-  margin-bottom: 20px;
+   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 12px;
 }
 
 .intro-card {
-  background: rgba(255,255,255,0.15);
+  width: 100%;
+  background: rgba(20, 20, 20, 0.35);
   backdrop-filter: blur(12px);
-  border-radius: 15px;
-  padding: 20px;
+  border-radius: 16px;
+  padding: 18px 20px;
   color: white;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.18);
 }
 
 .intro-card h2 {
@@ -1074,22 +1281,30 @@ section {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  padding: 15px 40px;
-  background-color: #e2e1e1;
-  color: #3f8d86;
-  font-size: 0.55rem; /* smaller font */
+  padding: 18px 40px;
+  background-color: rgba(255, 255, 255, 0.85);
+  color: #2f6f68;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  font-size: 0.70rem;
+  line-height: 1.4;
   box-sizing: border-box;
+
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .site-footer a {
   text-decoration: none;
-  color: #3f8d86;
+  color: #2f6f68;
   margin-left: 15px;
   transition: color 0.3s ease;
+  font-weight: 500;
+  letter-spacing: 0.2px;
 }
 
 .site-footer a:hover {
   color: #f4978e;
+  transform: translateY(-1px);
 }
 
 .footer-left img {
@@ -1105,12 +1320,15 @@ section {
 .footer-center {
   text-align: center;
   flex: 1;
+  opacity: 0.85;
+  font-weight: 500;
 }
 
 .footer-right {
   display: flex;
-  gap: 12px;
+  gap: 16px;
 }
+
 
 /* ================= Mobile Responsive ================= */
 @media (max-width: 768px) {
@@ -1143,20 +1361,50 @@ section {
     font-size: 0.9rem;
   }
 
+  /* ================= Mobile Responsive footer ================= */
+  @media (max-width: 768px) {
   .site-footer {
     flex-direction: column;
     align-items: center;
     text-align: center;
+
+    gap: 12px;
+    padding: 20px 16px;
+    font-size: 0.8rem;
+  }
+
+  .footer-right {
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 10px;
   }
 
-  .footer-left, .footer-center, .footer-right {
-    flex: none;
+  .site-footer a {
+    margin-left: 0; /* removes desktop spacing issue */
+    padding: 6px 8px; /* improves tap targets */
   }
 
-  .footer-right a {
-    margin-left: 0;
+  .footer-left {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
   }
+
+  .footer-left img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .footer-center {
+    order: 2;
+    opacity: 0.85;
+  }
+
+  .footer-right {
+    order: 3;
+  }
+}
+
 
   .state-search input {
     width: 80%;
@@ -1223,4 +1471,19 @@ section {
         margin-bottom: 20px;
         overflow-y: auto; /* enable scroll */
     }
+}
+
+
+/* ================= Mobile Responsive city page ================= */
+
+@media (max-width: 900px) {
+  .category-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
 }
