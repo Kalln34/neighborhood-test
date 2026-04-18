@@ -755,18 +755,22 @@ section {
 
 /* ================= subcategory card page ================= */
 body.subcategory-page .frosted-container {
-   max-width: 1100px;   
-  margin: 100px auto 40px;
+  max-width: 1300px;
+  margin: 80px auto 30px;
   padding: 30px;
-  align-items: stretch;
+
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+
   text-align: left;
-  background: rgba(255,255,255,0.08);
+  align-items: stretch;
 }
 
 body.subcategory-page {
-  background: radial-gradient(circle at top left, #4fa3a3, transparent 40%),
-              radial-gradient(circle at bottom right, #a0a64a, transparent 40%),
-              #1f3c4d;
+  background: #f5f7f6; 
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -777,10 +781,15 @@ body.subcategory-page main {
 }
 
 #subcategoryContent {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
+}
+
+.subcategory-header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
 /* ================= subcategory detail cards ================= */
@@ -791,83 +800,68 @@ body.subcategory-page main {
 }
 
 .detail-card {
-   width: 100%;
-  max-width: 900px;
-
   display: flex;
-  gap: 16px;
-  align-items: center;
+  flex-direction: column;   /* 🔥 key change */
+  align-items: flex-start;
 
   padding: 16px;
+  border-radius: 14px;
 
-  background: rgba(20, 20, 20, 0.35);
-  backdrop-filter: blur(12px);
+  background: #ffffff;
+  border: 1px solid #eee;
 
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.15);
-
-  color: white;
-
-  transition: transform 0.2s ease, background 0.2s ease;
-
-  position: relative;
-}
-
-.detail-card h3,
-.detail-card p,
-.intro-card h2,
-.intro-card p {
-  color: #ffffff;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.6);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.25s ease;
 }
 
 
 .detail-card h3 {
+  color: #222;
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
 }
 
 .detail-card p {
+  color: #555;
   margin: 4px 0;
-  opacity: 0.85;
   line-height: 1.4;
 }
 
 .detail-card a {
   margin-top: 6px;
   display: inline-block;
-  color: #a0a64a;
+  color: #3f8d86;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.detail-card a:hover {
   text-decoration: underline;
 }
 
 .detail-card img {
-   width: 90px;
-  height: 90px;
-  border-radius: 12px;
+  width: 100%;
+  height: 140px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .detail-info {
- display: flex;
+  display: flex;
   flex-direction: column;
   gap: 6px;
   text-align: left;
   flex: 1;
+  min-width: 0;
+  margin-top: 10px;
 }
 
 .detail-card:hover {
-  transform: translateY(-4px);
-  background: rgba(160,166,74,0.18);
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.08);
 }
 
-.detail-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.15);
-  border-radius: 16px;
-  pointer-events: none;
-}
+
 
 /* ================= subcategory intro css ================= */
 
@@ -879,13 +873,15 @@ body.subcategory-page main {
 }
 
 .intro-card {
-  width: 100%;
-  background: rgba(20, 20, 20, 0.35);
-  backdrop-filter: blur(12px);
-  border-radius: 16px;
+   width: 100%;
+  background: #ffffff;
+
+  border-radius: 12px;
+  border: 1px solid #eee;
+
   padding: 18px 20px;
-  color: white;
-  border: 1px solid rgba(255,255,255,0.18);
+
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .intro-card h2 {
@@ -1373,7 +1369,6 @@ body {
 
   .main-nav {
     flex-wrap: wrap;
-    padding: 12px 20px;
   }
 
   .hamburger {
@@ -1386,7 +1381,7 @@ body {
     flex-direction: column;
     width: 100%;
     margin-top: 10px;
-    padding: 10px;
+    padding: 12px;
 
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
@@ -1399,7 +1394,7 @@ body {
   }
 
   .main-nav .nav-links li a {
-    padding: 12px 14px;
+    padding: 12px;
     font-size: 1rem;
 
     width: 100%;
@@ -1415,7 +1410,6 @@ body {
 
   .hero-content {
     width: 95%;
-    padding: 18px;
   }
 
   .hero-content h1 {
@@ -1431,6 +1425,10 @@ body {
     font-size: 0.9rem;
   }
 
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+
   /* FOOTER */
   .site-footer {
     flex-direction: column;
@@ -1440,8 +1438,7 @@ body {
   }
 
   .footer-right {
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
   }
 
   /* STATE PAGE */
@@ -1461,16 +1458,27 @@ body {
     margin-bottom: 20px;
   }
 
+  /* SUBCATEGORY PAGE */
+.detail-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .detail-card img {
+    width: 100%;
+    height: 180px;
+  }
+}
+
   /* PROFILE */
   .profile-stats {
     flex-direction: column;
-    align-items: center;
   }
 
   .quick-actions button {
     min-width: 180px;
   }
-}
+
 
 /* ================= TABLET BREAKPOINT ================= */
 @media (max-width: 1024px) {
@@ -1485,6 +1493,7 @@ body {
 
   .state-sidebar {
     width: 100%;
+    position: relative;
   }
 }
 
