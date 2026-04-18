@@ -25,59 +25,75 @@
     </nav>
 
    <main class="insights-page">
-        <section id="community-tips">
-            <h2>Things I Wish I Knew Before Moving</h2>
-            <p class="page-intro">
-            Community-powered insights from locals sharing real experiences about living here.
-            </p>
 
-            <div class="info-box">
-            <h3>How this works</h3>
-            <ul>
-                <li>💬 Share real experiences about living here</li>
-                <li>⬆️ Upvote tips that are helpful</li>
-                <li>🔍 Filter by category (Traffic, Schools, etc.)</li>
-                <li>📌 Top-voted tips rise to the top automatically</li>
-            </ul>
-            </div>
+                <section class="insights-header">
+                    <h1>Local Insights</h1>
+                        <p class="page-intro">
+                        Real advice from people who live here. Learn what to expect before you move.
+                        </p>
+                </section>
 
-            <form id="tipForm">
+                    <section id="community-tips">
+                        <div class="insights-layout">
+
+            <!-- LEFT SIDE -->
+            <div class="insights-left">
+
+                <div class="info-box">
+                <h3>How this works</h3>
+                <ul>
+                    <li>💬 Share real experiences about living here</li>
+                    <li>⬆️ Upvote tips that are helpful</li>
+                    <li>🔍 Filter by category (Traffic, Schools, etc.)</li>
+                    <li>📌 Top-voted tips rise to the top automatically</li>
+                </ul>
+                </div>
+
+                <form id="tipForm">
 
                 <div class="form-group">
                     <label for="userTip">Share your Experience:</label>
                     <textarea
-                        id="userTip"
-                        rows="4"
-                        placeholder="Example: Traffic on 91 starts building around 3:00 PM on weekdays..."
-                        ></textarea>
+                    id="userTip"
+                    rows="4"
+                    placeholder="Example: Traffic on 91 starts building around 3:00 PM on weekdays..."
+                    ></textarea>
                 </div>
 
-                    <label for="tipCategory">Category</label>
-                    <select id="tipCategory">
-                        <option value="general">General</option>
-                        <option value="traffic">Traffic</option>
-                        <option value="schools">Schools</option>
-                        <option value="Healthcare">Healthcare</option>
-                        <option value="community">Community</option>
-                    </select>
-
-                  <button type="submit">Submit Your Tip</button>
-            </form>
-
-            <p id="submitMessage" style="color: black; display: none;">Tip submitted successfully!</p>
-
-            <!-- Optional filter -->
-            <label for="filterCategory">Filter by category:</label>
-                <select id="filterCategory">
-                    <option value="All">All</option>
+                <label for="tipCategory">Category</label>
+                <select id="tipCategory">
                     <option value="general">General</option>
                     <option value="traffic">Traffic</option>
                     <option value="schools">Schools</option>
-                    <option value="healthcare">Healthcare</option>
+                    <option value="Healthcare">Healthcare</option>
                     <option value="community">Community</option>
                 </select>
 
-            <ul id="tipsList"></ul>
+                <button type="submit">Submit Your Tip</button>
+                </form>
+
+                <p id="submitMessage" style="color: black; display: none;">
+                Tip submitted successfully!
+                </p>
+
+            </div>
+
+            <!-- RIGHT SIDE -->
+            <div class="insights-right">
+
+                <label for="filterCategory">Filter by category:</label>
+                <select id="filterCategory">
+                <option value="All">All</option>
+                <option value="general">General</option>
+                <option value="traffic">Traffic</option>
+                <option value="schools">Schools</option>
+                <option value="healthcare">Healthcare</option>
+                <option value="community">Community</option>
+                </select>
+
+                <ul id="tipsList"></ul>
+
+            </div>
         </section>
     </main>
 
