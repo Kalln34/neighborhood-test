@@ -26,18 +26,26 @@
 
    <main class="insights-page">
 
-                <section class="insights-header">
-                    <h1>Local Insights</h1>
-                        <p class="page-intro">
-                        Real advice from people who live here. Learn what to expect before you move.
-                        </p>
-                </section>
+    <section class="insights-header">
+        <h1>Local Insights</h1>
+             <p class="page-intro">
+             Real advice from people who live here. Learn what to expect before you move.
+             </p>
+    </section>
 
-                    <section id="community-tips">
-                        <div class="insights-layout">
+    <section id="community-tips">
+        <div class="insights-layout">
 
             <!-- LEFT SIDE -->
             <div class="insights-left">
+
+                <div class="insights-hero">
+                    <img src="Images/localinsight.webp" alt="Local neighborhood" />
+                        <div class="insights-hero-overlay">
+                            <h2>Know Before You Move</h2>
+                            <p>Real stories from real residents.</p>
+                        </div>
+                </div>
 
                 <div class="info-box">
                 <h3>How this works</h3>
@@ -54,20 +62,31 @@
                 <div class="form-group">
                     <label for="userTip">Share your Experience:</label>
                     <textarea
-                    id="userTip"
-                    rows="4"
-                    placeholder="Example: Traffic on 91 starts building around 3:00 PM on weekdays..."
+                        id="userTip"
+                        rows="4"
+                        placeholder="Example: Traffic on 91 starts building around 3:00 PM on weekdays..."
                     ></textarea>
                 </div>
 
+                <label for="tipState">State</label>
+                    <select id="tipState">
+                        <option value="california">California</option>
+                        <option value="texas">Texas</option>
+                        <option value="florida">Florida</option>
+                        <option value="newyork">New York</option>
+                    </select>
+
+
+               <div class="form-group">  
                 <label for="tipCategory">Category</label>
-                <select id="tipCategory">
-                    <option value="general">General</option>
-                    <option value="traffic">Traffic</option>
-                    <option value="schools">Schools</option>
-                    <option value="Healthcare">Healthcare</option>
-                    <option value="community">Community</option>
-                </select>
+                    <select id="tipCategory">
+                        <option value="general">General</option>
+                        <option value="traffic">Traffic</option>
+                        <option value="schools">Schools</option>
+                        <option value="Healthcare">Healthcare</option>
+                        <option value="community">Community</option>
+                    </select>
+               </div>        
 
                 <button type="submit">Submit Your Tip</button>
                 </form>
@@ -81,17 +100,28 @@
             <!-- RIGHT SIDE -->
             <div class="insights-right">
 
+                 <label for="filterState">Filter by state:</label>
+                    <select id="filterState">
+                        <option value="All">All</option>
+                        <option value="california">California</option>
+                        <option value="texas">Texas</option>
+                        <option value="florida">Florida</option>
+                        <option value="newyork">New York</option>
+                    </select>
+
                 <label for="filterCategory">Filter by category:</label>
                 <select id="filterCategory">
-                <option value="All">All</option>
-                <option value="general">General</option>
-                <option value="traffic">Traffic</option>
-                <option value="schools">Schools</option>
-                <option value="healthcare">Healthcare</option>
-                <option value="community">Community</option>
+                    <option value="All">All</option>
+                    <option value="general">General</option>
+                    <option value="traffic">Traffic</option>
+                    <option value="schools">Schools</option>
+                    <option value="healthcare">Healthcare</option>
+                    <option value="community">Community</option>
                 </select>
 
                 <ul id="tipsList"></ul>
+
+            </div>
 
             </div>
         </section>
