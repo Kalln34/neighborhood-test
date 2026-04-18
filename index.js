@@ -211,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // =================== SUBCATEGORY PAGE ===================
   const subTitle = document.getElementById("subcategoryTitle");
   const content = document.getElementById("subcategoryContent");
-  const subBreadcrumb = document.getElementById("subcategoryBreadcrumb");
+  
 
   const category = city?.categories?.[categoryKey];
   const subcategory = category?.subcategories?.[subcategoryKey];
@@ -262,6 +262,8 @@ document.addEventListener("DOMContentLoaded", () => {
         content.appendChild(card);
       });
     }
+
+    const subBreadcrumb = document.getElementById("breadcrumbTrail");
 
     setBreadcrumb(subBreadcrumb, [
       { label: "Explore", href: "explore.html" },
