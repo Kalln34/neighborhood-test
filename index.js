@@ -275,6 +275,121 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+// =================== Local Insights Page ===================
+
+(function() {
+  const tipForm = document.getElementById("tipForm");
+  if (!tipForm) return;
+
+  const userTipInput = document.getElementById("userTip");
+  const tipCategory = document.getElementById("tipCategory");
+  const tipState = document.getElementById("tipState");
+
+  const tipsList = document.getElementById("tipsList");
+  const submitMessage = document.getElementById("submitMessage");
+
+  const filterCategory = document.getElementById("filterCategory");
+  const filterState = document.getElementById("filterState");
+
+  let savedTips = JSON.parse(localStorage.getItem("communityTips") || "[]");
+
+  function saveTips() {
+    localStorage.setItem("communityTips", JSON.stringify(savedTips));
+  }
+
+  function renderTips() {
+    const categoryFilter = filterCategory?.value || "All";
+    const stateFilter = filterState?.value || "All";
+
+    tipsList.innerHTML = "";
+
+    // 🔥 SORT by votes (highest first)
+    const sortedTips = [...savedTips].sort((a, b) => b.votes - a.votes);
+
+    sortedTips.forEach((tip, index) => {
+      if (categoryFilter !== "All" && tip.category !== categoryFilter) return;
+      if (stateFilter !== "All" && tip.state !== stateFilter) return;
+
+      const li = document.createElement("li");
+      li.className = "tip-card";
+
+      li.innerHTML = `
+        <div class="vote-column">
+          <button data-action="upvote" data-index="${index}">▲</button>
+          <div>${tip.votes}</div>
+          <button data-action="downvote" data-index="${index}">▼</button>
+        </div>
+
+        <div class="tip-content">
+          <div class="tip-meta">
+            <span class="tag">${tip.state}</span>
+            <span class="tag">${tip.category}</span>
+          </div>
+
+          <p>${tip.text}</p>
+        </div>
+
+        <button class="delete-btn" data-index="${index}">Delete</button>
+      `;
+
+      tipsList.appendChild(li);
+    });
+  }
+
+  // ✅ Submit tip
+  tipForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const text = userTipInput.value.trim();
+    if (!text) return alert("Please enter a tip");
+
+    const newTip = {
+      text,
+      category: tipCategory.value,
+      state: tipState.value,
+      votes: 0,
+      date: Date.now()
+    };
+
+    savedTips.push(newTip);
+    saveTips();
+    renderTips();
+
+    userTipInput.value = "";
+    submitMessage.style.display = "block";
+    setTimeout(() => submitMessage.style.display = "none", 2000);
+  });
+
+  // ✅ Click handling (vote + delete)
+  tipsList.addEventListener("click", function(e) {
+    const index = e.target.dataset.index;
+    if (index === undefined) return;
+
+    if (e.target.dataset.action === "upvote") {
+      savedTips[index].votes++;
+    }
+
+    if (e.target.dataset.action === "downvote") {
+      savedTips[index].votes--;
+    }
+
+    if (e.target.classList.contains("delete-btn")) {
+      savedTips.splice(index, 1);
+    }
+
+    saveTips();
+    renderTips();
+  });
+
+  // ✅ Filters
+  filterCategory?.addEventListener("change", renderTips);
+  filterState?.addEventListener("change", renderTips);
+
+  renderTips();
+  });
+
+
  // =================== HAMBURGER ===================
 
 const hamburger = document.getElementById("hamburger");
