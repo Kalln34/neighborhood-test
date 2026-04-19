@@ -588,7 +588,7 @@ section {
 
 /* ================= CITY PAGE ================= */
 .city-page .frosted-container {
-  margin-top: 60px;
+  margin-top: 30px;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(14px);
   max-width: 1300px;
@@ -597,18 +597,26 @@ section {
 .city-header {
   text-align: center;
   color: white;
-  max-width: 650px;
+  max-width: 700px;
   margin: 0 auto;
 
-  padding: 10px 0;
-  background: transparent;
-  border: none;
-  box-shadow: none;
+  padding: 30px 20px;
+  border-radius: 16px;
+
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 }
 
 .city-header h1 {
-  font-size: 2.5rem;
-  margin-bottom: 8px;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+  font-weight: 700;
+ 
 }
 
 .city-header::after {
@@ -636,6 +644,28 @@ section {
   margin-top: 15px;
   display: flex;
   justify-content: center;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #a0a64a, #f4978e);
+  color: white;
+  border: none;
+
+  padding: 12px 22px;
+  border-radius: 999px;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  filter: brightness(1.05);
 }
 
 /* ================= City Cards Grid ================= */
@@ -673,6 +703,24 @@ section {
 
 .category-section > h2 {
   font-size: 1.2rem;
+  margin-bottom: 5px;
+  letter-spacing: 0.3px;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+.category-section > h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 2px;
+  margin-top: 8px;
+  background: #a0a64a;
+  border-radius: 10px;
 }
 
 .category-card h3 {
@@ -715,13 +763,17 @@ section {
 .category-section {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   width: 100%;
-  padding: 20px;
-  border-radius: 14px;
+  padding: 25px;
+  border-radius: 18px;
 
-  background: rgba(0, 0, 0, 0.12);
+  background: rgba(255,255,255,0.05);
   border: 1px solid rgba(255,255,255,0.08);
+
+  backdrop-filter: blur(10px);
+
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
 
 }
 
