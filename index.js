@@ -38,6 +38,25 @@ function createCards(container, items, getHref, getTitle, getImg) {
   });
 }
 
+// =================== HAMBURGER ===================
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  if (!hamburger || !navLinks) return;
+
+  hamburger.addEventListener("click", (e) => {
+    e.stopPropagation();
+    navLinks.classList.toggle("active");
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+      navLinks.classList.remove("active");
+    }
+  });
+});
+
 // =================== Breadcrumb ===================
 function setBreadcrumb(el, items) {
   if (!el) return;
@@ -303,40 +322,6 @@ if (saveBtn && city && stateKey && cityKey) {
       { label: subcategory.label }
     ]);
   }
-
-
-
- // =================== HAMBURGER ===================
-  const hamburger = document.getElementById("hamburger");
-  const navLinks = document.getElementById("navLinks");
-
-  if (hamburger && navLinks) {
-    hamburger.addEventListener("click", (e) => {
-       e.stopPropagation();
-      navLinks.classList.toggle("active");
-    });
-
-     // Close when clicking a link
-  navLinks.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      navLinks.classList.remove("active");
-    });
-  });
-
-  // Close when clicking outside of menu
-  document.addEventListener("click", (e) => {
-    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
-      navLinks.classList.remove("active");
-    }
-  });
-
-  // Close when window resizes
-  window.addEventListener("resize", () => {
-    if (window.innerWidth > 768) {
-      navLinks.classList.remove("active");
-    }
-  });
-}
 
 });
 
