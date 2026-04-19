@@ -1028,6 +1028,12 @@ body.subcategory-page main {
   backdrop-filter: blur(10px);
 }
 
+.insights-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
 .insights-right::before {
   content: "Community Feed";
   display: block;
