@@ -56,16 +56,6 @@ section {
   margin-bottom: 30px;
 }
 
-/* ================= Hamburger Menu ================= */
-.hamburger {
-  display: none;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #333;
-}
-
 
 /* ================= General Page Layout - all pages ================= */
 
@@ -1688,7 +1678,17 @@ body {
 
   .hamburger {
     display: block;
-    margin-left: auto;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    width: 100%;
+    padding: 20px;
   }
 
   .main-nav .nav-links {
