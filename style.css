@@ -1365,12 +1365,12 @@ body.subcategory-page main {
 
 /* ================= Profile Container ================= */
 .profile-container {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 100px auto 60px auto; /* push below nav */
     padding: 20px;
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
     background: rgba(255,255,255,0.1); /* frosted container */
     backdrop-filter: blur(10px);
     border-radius: 15px;
@@ -1379,20 +1379,28 @@ body.subcategory-page main {
 }
 
 .profile-container section {
-  background: rgba(0,0,0,0.2);
+  background: rgba(255,255,255,0.6);
   border-radius: 14px;
   padding: 25px;
-  border: 1px solid rgba(255,255,255,0.15);
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
+
+.profile-container section p,
+.profile-container section h2 {
+  color: #333;
+}
+
 
 /* ================= Profile Header ================= */
 .profile-header {
   text-align: center;
   background: linear-gradient(
     135deg,
-    rgba(160,166,74,0.25),
-    rgba(0,0,0,0.3)
+    rgba(160,166,74,0.3),
+    rgba(255,255,255,0.4)
   );
+  color: #333;
   border-radius: 14px;
   padding: 30px 20px;
 }
@@ -1409,7 +1417,14 @@ body.subcategory-page main {
     margin-bottom: 20px;
 }
 
+.profile-main {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 30px;
+}
+
 /* ================= Profile Stats ================= */
+
 .profile-stats {
     display: flex;
     justify-content: center;
@@ -1458,6 +1473,7 @@ body.subcategory-page main {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 15px;
   text-align: center;
+  background: rgba(255,255,255,0.7);
 }
 
 .quick-actions h2 {
@@ -1467,7 +1483,7 @@ body.subcategory-page main {
 }
 
 .quick-actions button {
-    padding: 12px 25px;
+    padding: 14px;
     background: #a0a64a;
     color: white;
     font-weight: 600;
@@ -1476,6 +1492,7 @@ body.subcategory-page main {
     cursor: pointer;
     transition: all 0.3s ease;
     min-width: 220px;
+    font-size: 1rem;
 }
 
 .quick-actions button:hover {
@@ -1488,6 +1505,7 @@ body.subcategory-page main {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  background: rgba(255,255,255,0.7);
 }
 
 .saved-section h2 {
@@ -1504,21 +1522,20 @@ body.subcategory-page main {
 
 /* Individual saved location card */
 .saved-card {
-    background: rgba(160,166,74,0.2);
+    background: rgba(255,255,255,0.9);
+    color: #333;
     border-radius: 12px;
-    padding: 15px;
+    padding: 18px;
     text-align: center;
-    color: white;
     font-weight: 500;
-    border: 1px solid rgba(255,255,255,0.2);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    transition: all 0.3s ease;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    transition: all 0.25s ease;
 }
 
 .saved-card:hover {
-    background: rgba(160,166,74,0.35);
-    transform: translateY(-3px);
+    background: rgba(160,166,74,0.15);
+    transform: translateY(-4px) scale(1.02);
 }
 
 
@@ -1718,6 +1735,14 @@ body {
   .quick-actions button {
     min-width: 180px;
   }
+
+
+  @media (min-width: 900px) {
+  .profile-main {
+    grid-template-columns: 320px 1fr;
+    align-items: start;
+  }
+}
 
 
 /* ================= TABLET BREAKPOINT ================= */
