@@ -3,9 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Neighborhood Navigator">
   <title>Neighborhood Navigator - City</title>
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body class="city-page">
 
 <nav class="main-nav">
@@ -24,23 +26,30 @@
         </ul>
     </nav>
 
-<main class="city-main">
+<main class="page-layout city-main page-bg">
 
-  <div class="frosted-container">
+  <div class="frosted-container city-container">
     
     <!-- Breadcrumb -->
     <nav class="breadcrumb" id="breadcrumbTrail"></nav>
 
-    <!-- City Header -->
+    <!-- Header -->
     <section class="city-header">
       <h1 id="cityTitle">City Name</h1>
-      <p class="city-subtitle">Explore key information and categories for this city</p>
+      <p class="page-subtitle">
+        Explore key categories and insights for this city.
+      </p>
+
+      <div class="city-actions">
+      <button id="saveCityBtn" class="btn-primary">
+        <p>Save This City</p>
+      </button>
+      </div>
     </section>
 
-    <!-- Categories Grid (UNCHANGED ID) -->
+    <!-- Categories -->
     <section class="category-section">
-      <h2 class="section-title"></h2>
-      <p class="page-subtitle">Choose a category to explore this city</p>
+      <h2 class="section-title">Browse Categories</h2>
       <div class="category-grid" id="categoryGrid"></div>
     </section>
 
@@ -49,14 +58,17 @@
 </main>
 
 <script src="data.js"></script> 
+
 <footer class="site-footer">
     <div class="footer-left">
-      <a href="#"><img src="images/facebook.svg" alt="Facebook"></a>
-      <a href="#"><img src="images/instagram.svg" alt="Instagram"></a>
+      <a href="https://www.facebook.com/"><img src="images/facebook.svg" alt="Facebook"></a>
+      <a href="https://www.instagram.com/"><img src="images/instagram.svg" alt="Instagram"></a>
     </div>
+
         <div class="footer-center">
         <p>Neighborhood Navigator 2026</p>
         </div>
+
     <div class="footer-right">
       <a href="about.html">About</a>
       <a href="profile.html">Profile</a>
