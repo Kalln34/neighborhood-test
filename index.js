@@ -208,6 +208,37 @@ document.addEventListener("DOMContentLoaded", () => {
     ]);
   }
 
+  // =================== SAVE CITY FEATURE ===================
+const saveBtn = document.getElementById("saveCityBtn");
+
+if (saveBtn && city && stateKey && cityKey) {
+
+  saveBtn.addEventListener("click", () => {
+
+    let saved = JSON.parse(localStorage.getItem("savedLocations") || "[]");
+
+    // prevent duplicates
+    const exists = saved.some(
+      item => item.cityKey === cityKey && item.stateKey === stateKey
+    );
+
+    if (!exists) {
+      saved.push({
+        stateKey,
+        cityKey,
+        name: city.name,
+        stateName: state.name
+      });
+
+      localStorage.setItem("savedLocations", JSON.stringify(saved));
+
+      alert("City saved!");
+    } else {
+      alert("Already saved!");
+    }
+  });
+}
+
   // =================== SUBCATEGORY PAGE ===================
   const subTitle = document.getElementById("subcategoryTitle");
   const content = document.getElementById("subcategoryContent");
@@ -304,7 +335,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     tipsList.innerHTML = "";
 
-    // 🔥 SORT by votes (highest first)
+    // SORT by votes (highest first)
     const sortedTips = [...savedTips].sort((a, b) => b.votes - a.votes);
 
     sortedTips.forEach((tip, index) => {
@@ -337,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ✅ Submit tip
+  //Submit tip
   tipForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -361,7 +392,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => submitMessage.style.display = "none", 2000);
   });
 
-  // ✅ Click handling (vote + delete)
+  // Click handling (vote + delete)
   tipsList.addEventListener("click", function(e) {
     const index = e.target.dataset.index;
     if (index === undefined) return;
@@ -382,13 +413,63 @@ document.addEventListener("DOMContentLoaded", () => {
     renderTips();
   });
 
-  // ✅ Filters
+  //  Filters
   filterCategory?.addEventListener("change", renderTips);
   filterState?.addEventListener("change", renderTips);
 
   renderTips();
   });
 
+
+// =================== PROFILE PAGE ===================
+document.addEventListener("DOMContentLoaded", () => {
+
+  const savedContainer = document.getElementById("savedLocationsList");
+  const savedCount = document.getElementById("savedCount");
+
+  if (!savedContainer) return;
+
+  function renderSaved() {
+    const saved = JSON.parse(localStorage.getItem("savedLocations") || "[]");
+
+    savedContainer.innerHTML = "";
+    savedCount.textContent = saved.length;
+
+    if (saved.length === 0) {
+      savedContainer.innerHTML = `<p class="empty-state">No saved locations yet.</p>`;
+      return;
+    }
+
+    saved.forEach(item => {
+      const card = document.createElement("div");
+      card.className = "saved-card";
+
+      card.innerHTML = `
+        <h3>${item.name}</h3>
+        <p>${item.stateName}</p>
+        <button>View</button>
+      `;
+
+      card.querySelector("button").addEventListener("click", () => {
+        window.location.href = `city.html?state=${item.stateKey}&city=${item.cityKey}`;
+      });
+
+      savedContainer.appendChild(card);
+    });
+  }
+
+  renderSaved();
+
+  window.addEventListener("focus", renderSaved);
+
+});
+
+const clearBtn = document.getElementById("clearAllBtn");
+
+clearBtn?.addEventListener("click", () => {
+  localStorage.removeItem("savedLocations");
+  location.reload();
+});
 
  // =================== HAMBURGER ===================
 

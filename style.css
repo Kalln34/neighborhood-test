@@ -631,6 +631,13 @@ section {
   background-repeat: no-repeat;
 }
 
+/* ================= city save button ================= */
+.city-actions {
+  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+}
+
 /* ================= City Cards Grid ================= */
 .category-grid {
   display: grid;
