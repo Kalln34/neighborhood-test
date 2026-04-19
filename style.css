@@ -1427,9 +1427,10 @@ body.subcategory-page main {
 
 .profile-stats {
     display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;  
+    
 }
 
 .stat-card {
@@ -1443,6 +1444,9 @@ body.subcategory-page main {
     border: 1px solid rgba(255,255,255,0.2);
     backdrop-filter: blur(6px);
     transition: all 0.3s ease;
+
+    flex: 1 1 220px;   
+    max-width: 300px;
 }
 
 .stat-card:hover::before {
@@ -1516,7 +1520,7 @@ body.subcategory-page main {
 
 #savedLocationsList {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px;
 }
 
@@ -1728,15 +1732,13 @@ body {
 }
 
   /* PROFILE */
-  .profile-stats {
-    flex-direction: column;
-  }
+
 
   .quick-actions button {
     min-width: 180px;
   }
 
-
+/* PROFILE DESKTOP */
   @media (min-width: 900px) {
   .profile-main {
     grid-template-columns: 320px 1fr;
