@@ -304,6 +304,18 @@ if (saveBtn && city && stateKey && cityKey) {
     ]);
   }
 
+
+
+ // =================== HAMBURGER ===================
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
+
+  if (hamburger && navLinks) {
+    hamburger.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+  }
+
 });
 
 
@@ -469,13 +481,4 @@ const clearBtn = document.getElementById("clearAllBtn");
 clearBtn?.addEventListener("click", () => {
   localStorage.removeItem("savedLocations");
   location.reload();
-});
-
- // =================== HAMBURGER ===================
-
-const hamburger = document.getElementById("hamburger");
-const navLinks = document.querySelector(".nav-links");
-
-hamburger?.addEventListener("click", () => {
-  navLinks.classList.toggle("active");
 });
