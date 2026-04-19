@@ -311,10 +311,32 @@ if (saveBtn && city && stateKey && cityKey) {
   const navLinks = document.getElementById("navLinks");
 
   if (hamburger && navLinks) {
-    hamburger.addEventListener("click", () => {
+    hamburger.addEventListener("click", (e) => {
+       e.stopPropagation();
       navLinks.classList.toggle("active");
     });
-  }
+
+     // Close when clicking a link
+  navLinks.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+    });
+  });
+
+  // Close when clicking outside of menu
+  document.addEventListener("click", (e) => {
+    if (!navLinks.contains(e.target) && !hamburger.contains(e.target)) {
+      navLinks.classList.remove("active");
+    }
+  });
+
+  // Close when window resizes
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 768) {
+      navLinks.classList.remove("active");
+    }
+  });
+}
 
 });
 
