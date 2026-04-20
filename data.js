@@ -1,5 +1,5 @@
 // Global data
-window.DATA = {
+window.DATA = window.DATA || {
   // =================== Alabama ===================
     alabama: {
   name: "Alabama",
@@ -2184,4 +2184,5 @@ wyoming: {
   }
 },
 // =================== add new state after },===================
-}
+};
+window.DATA = window.DATA;

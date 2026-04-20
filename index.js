@@ -71,6 +71,10 @@ function setBreadcrumb(el, items) {
 // =================== MAIN ===================
 document.addEventListener("DOMContentLoaded", () => {
 
+  const DATA = window.DATA;
+
+  console.log("DATA inside DOMContentLoaded:", DATA);
+
   const params = new URLSearchParams(window.location.search);
   const stateKey = params.get("state");
   const cityKey = params.get("city");
