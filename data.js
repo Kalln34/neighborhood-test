@@ -8,7 +8,7 @@ const DATA = {
 
     montgomery: {
       name: "Montgomery",
-      img: "Images/montgomeryal.jpg",
+      img: "Images/Alabama/montgomeryal.webp",
       categories: {
 
         education: {
@@ -18,16 +18,42 @@ const DATA = {
               label: "Public Schools",
               items: [
                 {
-                  name: "Montgomery High School",
-                  description: "Public high school in Montgomery.",
-                  address: "Example address",
-                  img: "",
-                  link: "#"
+                  name: "Montgomery Public Schools",
+                  description: "Directory to elementary, middle and high schools in Montgomery, Alabama.",
+                  img: "Images/Alabama/publicschoolalabama.webp",
+                  link: "https://www.mps.k12.al.us/"
+                },
+                {
+                  name: "Montgomery Magnet Schools",
+                  description: "Information for magnet school programs in Montgomery, Alabama.",
+                  img: "Images/Alabama/magnetschoolalabama.webp",
+                  link: "https://www.mps.k12.al.us/page/magnet-schools"
                 }
               ]
+            },
+            
+            universities_colleges: {
+                label: "Universities and Colleges",
+                items: [
+                  {
+                    name: "Alabama State University",
+                    description: "Public university in Montgomery.",
+                    address: "915 S. Jackson Street Montgomery, AL",
+                    img: "Images/Alabama/asu.webp",
+                    link: "https://alasu.edu/"
+                  },
+                  {
+                    name: "Auburn University at Montgomery",
+                    description: "A public university offering over 100 degrees, known for its diverse campus, small class sizes, and extensive online programs.",
+                    address: "7400 East Dr, Montgomery, AL",
+                    img: "Images/Alabama/auburnuniversity.webp",
+                    link: "https://www.aum.edu/"
+                  },
+
+                ]
+              }
             }
-          }
-        },
+          },
 
         healthcare: {
           label: "Healthcare",
@@ -36,11 +62,18 @@ const DATA = {
               label: "Hospitals",
               items: [
                 {
-                  name: "Montgomery General Hospital",
-                  description: "Hospital in Montgomery.",
-                  address: "",
-                  img: "",
-                  link: "#"
+                  name: "Jackson Hospital",
+                  description: "Jackson Hospital is a not-for-profit organization committed to improving the health of all members of our community by providing superior, patient-centered and cost-effective care in a safe, compassionate environment.",
+                  address: "1725 Pine St., Montgomery, AL",
+                  img: "Images/Alabama/jacksonhospital.webp",
+                  link: "https://www.jackson.org/"
+                },
+                 {
+                  name: "Baptist Medical Center East",
+                  description: "Baptist Medical Center East is a 176-bed acute care hospital providing high-quality healthcare, specializing in women and children’s services.",
+                  address: "400 Taylor Road Montgomery, AL",
+                  img: "Images/Alabama/baptisthospital.webp",
+                  link: "https://www.jackson.org/"
                 }
               ]
             }
@@ -61,7 +94,7 @@ alaska: {
 
     anchorage: {
       name: "Anchorage",
-      img: "Images/city.jpg",
+      img: "Images/Alaska/anchorage.webp",
       categories: {
 
         education: {
@@ -71,11 +104,54 @@ alaska: {
               label: "Public Schools",
               items: [
                 {
-                  name: "Example School",
-                  description: "Description",
-                  address: "Address",
-                  img: "",
-                  link: "#"
+                  name: "Anchorage School System Schools",
+                  description: "Directory to elementary, middle, high schools, and charter schools in Anchorage, Alaska.",
+                  img: "Images/Alaska/anchorageschools.webp",
+                  link: "https://www.asdk12.org/"
+                }
+              ]
+            },
+            
+            universities_colleges: {
+                label: "Universities and Colleges",
+                items: [
+                  {
+                    name: "University of Alaska Anchorage",
+                    description: "The University of Alaska Anchorage (UAA) is a public university in Anchorage, Alaska, United States.",
+                    address: "3211 Providence Dr, Anchorage, AK",
+                    img: "Images/Alaska/universityalaska.webp",
+                    link: "https://www.uaa.alaska.edu/"
+                  },
+                  {
+                    name: "Alaska Pacific University",
+                    description: "APU delivers an education that is collaborative, innovative, and transformational. Encouraging student development, supporting community engagement.",
+                    address: "4101 University Drive, Anchorage, AK ",
+                    img: "Images/Alaska/apu.webp",
+                    link: "https://www.alaskapacific.edu/"
+                  },
+
+                ]
+              }
+            }
+          },
+
+        healthcare: {
+          label: "Healthcare",
+          subcategories: {
+            hospitals: {
+              label: "Hospitals",
+              items: [
+                {
+                  name: "Alaska Regional Hospital",
+                  description: "With more than 1,000 employees and a medical staff of over 550 independent practitioners, Alaska Regional Hospital offers a broad spectrum of health services.",
+                  img: "Images/Alaska/alaskaregionalhospital.webp",
+                  link: "https://www.alaskaregional.com/?utm_campaign=corp_listings_mgmt&utm_source=google&utm_medium=business_listing"
+                },
+                 {
+                  name: "Providence Alaska Medical Center",
+                  description: "The state’s largest hospital and a nationally recognized adult and pediatric trauma center, Providence Alaska Medical Center provides full-service, comprehensive care to all Alaskans, a role unmatched by any other in the state.",
+                  img: "Images/Alaska/providencehospital.webp",
+                  link: "https://www.providence.org/locations/ak/alaska-medical-center"
                 }
               ]
             }
