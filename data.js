@@ -1,5 +1,5 @@
 // Global data
-const DATA = {
+window.DATA = {
   // =================== Alabama ===================
     alabama: {
   name: "Alabama",
