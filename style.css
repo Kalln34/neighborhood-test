@@ -1196,14 +1196,29 @@ body.subcategory-page main {
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
+
+.tip-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+}
+
 .tip-content p {
   margin: 5px 0;
+  line-height: 1.5;
 }
 
 .tip-meta {
   display: flex;
   gap: 8px;
   margin-bottom: 6px;
+}
+
+
+.tip-meta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .tag {
@@ -1658,8 +1673,9 @@ body.subcategory-page main {
 
 
 .tip-card p {
-  margin: 10px 0;
+  margin: 12px 0;
   line-height: 1.5;
+  padding-left: 10px;
 }
 
 /* Tags (state + category) */
