@@ -972,6 +972,9 @@ body.subcategory-page main {
   margin-bottom: 30px;
 }
 
+.insights-header h1 {
+  font-size: 2.5rem;
+}
 /* ================= local insights page hero image ================= */
 
 .insights-hero {
@@ -1620,6 +1623,64 @@ body.subcategory-page main {
 .saved-card:hover {
     background: rgba(160,166,74,0.15);
     transform: translateY(-4px) scale(1.02);
+}
+
+
+/* ================= Tips Section ================= */
+.tips-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(255,255,255,0.7);
+}
+
+.tips-section h2 {
+  font-size: 1.8rem;
+  color: #a0a64a;
+  margin-bottom: 10px;
+}
+
+/* Tip Container */
+#myTipsList {
+  display: grid;
+  gap: 15px;
+}
+
+
+.tip-card {
+  background: rgba(255,255,255,0.9);
+  border-radius: 12px;
+  padding: 15px 18px;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  color: #333;
+}
+
+
+.tip-card p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* Tags (state + category) */
+.tip-meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tag {
+  background: #a0a64a;
+  color: white;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+/* Vote text */
+.tip-card small {
+  color: #666;
+  font-size: 0.8rem;
 }
 
 

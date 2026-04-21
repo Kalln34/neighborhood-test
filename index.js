@@ -476,6 +476,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedContainer = document.getElementById("savedLocationsList");
   const savedCount = document.getElementById("savedCount");
 
+  const tipsContainer = document.getElementById("myTipsList");
+  const tipsCount = document.getElementById("tipsCount");
+
   if (!savedContainer) return;
 
   function renderSaved() {
@@ -507,7 +510,36 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function renderMyTips() {
+    const tips = JSON.parse(localStorage.getItem("communityTips") || "[]");
+
+    tipsContainer.innerHTML = "";
+    tipsCount.textContent = tips.length;
+
+    if (tips.length === 0) {
+      tipsContainer.innerHTML = `<p class="empty-state">No tips submitted yet.</p>`;
+      return;
+    }
+
+    tips.forEach(tip => {
+      const div = document.createElement("div");
+      div.className = "tip-card";
+
+      div.innerHTML = `
+        <div class="tip-meta">
+          <span class="tag">${tip.state}</span>
+          <span class="tag">${tip.category}</span>
+        </div>
+        <p>${tip.text}</p>
+        <small>Votes: ${tip.votes}</small>
+      `;
+
+      tipsContainer.appendChild(div);
+    });
+  }
+
   renderSaved();
+  renderMyTips();
 
   window.addEventListener("focus", renderSaved);
 
